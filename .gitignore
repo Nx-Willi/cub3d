@@ -1,3 +1,10 @@
+# Customs
+*.swp
+.nfs*
+*.o
+.vscode
+cub3d
+
 # Prerequisites
 *.d
 
