@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
+#    By: xlb <xlb@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/05 10:12:46 by xle-baux         ###   ########.fr        #
+#    Updated: 2022/08/05 22:21:42 by xlb              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ PATHHEADERS	= includes/
 PATHLIBFT	= libft/
 PATHNULL	= /dev/null
 
-SRCS		= $(addprefix ${PATHSRCS}, main.c parser.c)
+SRCS		= $(addprefix ${PATHSRCS}, main.c parser.c parcer_tools.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}

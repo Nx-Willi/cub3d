@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xlb <xlb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/05 11:05:59 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/05 23:15:53 by xlb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,31 @@
 # include <fcntl.h>
 
 typedef struct s_info		t_info;
-typedef struct s_texture	t_texture;
 // typedef struct s_color		t_color;
 
 struct	s_info
 {
-	t_texture	textures;
-	t_color		floor;
-	t_color 	ceilling;
-};
-
-struct s_texture
-{
-	char	*nord_texture;	
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
+	char	*no_texture;	
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	// t_color		floor_color;
+	// t_color 	ceilling_color;
 };
 
 // struct	s_color
 // {
-// 	unsigned int	r;
-// 	unsigned int	g;
-// 	unsigned int	b;
+// 	int	r;
+// 	int	g;
+// 	int	b;
 // };
 
-t_info	*parcer(char *map);
+int		count_map_lines(char *map);
+int		is_empty_line(char *line);
+
+void free_split_char(char **str);
+
+t_info	parser(char *map);
+t_info  init_info_struct(void);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xlb <xlb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/05 11:05:38 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/05 22:08:11 by xlb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int	main(int args, char **argv)
 	if (args != 2)
 		return (ft_putstr_fd("Error\n", 1), 1);
 	info = parser(argv[1]);
+	if (info.test == 1)
+		return (1);
 	return (0);
 }
