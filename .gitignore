@@ -1,4 +1,5 @@
 # Customs
+cub3D
 *.swp
 .nfs*
 *.o
