@@ -19,7 +19,7 @@ int	main(int args, char **argv)
 	if (args != 2)
 		return (ft_putstr_fd("Error\n", 1), 1);
 	if (parser(&info, argv[1]) == FALSE)
-		return (1);
+		return (5);
 	if (info.test == 1)
 		return (1);
 	return (0);
