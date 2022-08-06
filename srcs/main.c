@@ -29,10 +29,9 @@ int	main(int args, char **argv)
 	if (args != 2)
 		return (ft_putstr_fd("Error\nUsage: ./cub3D \'maps.cub\'\n", 1), 1);
 	if (!check_file(argv[1]))
+		return (1);
+	if (parser(&info, argv[1]) == FALSE)
 		return (2);
-	info = parser(argv[1]);
-	if (info.test == 1)
-		return (3);
 	init_mlx(&info);
 	return (0);
 }
