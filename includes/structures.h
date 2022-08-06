@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 17:08:09 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:21:04 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ struct	s_check_map
 
 struct	s_info
 {
-	char	*no_texture;	
-	char	*so_texture;
-	char	*we_texture;
-	char	*ea_texture;
+	char		*no_texture;	
+	char		*so_texture;
+	char		*we_texture;
+	char		*ea_texture;
 	t_color		floor_color;
 	t_color 	ceilling_color;
 };
