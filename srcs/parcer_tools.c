@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:35:23 by xlb               #+#    #+#             */
-/*   Updated: 2022/08/06 16:29:23 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 17:40:26 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,24 @@ void	free_split_char(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
+}
+
+int	check_rgb_color(char *color)
+{
+	int		i;
+	char	**split_color;
+
+	i = 0;
+	split_color = ft_split(color, ',');
+	while (split_color[i])
+		i++;
+	if (i != 3)
+		return (FALSE);
+	i = 0;
+	while (split_color[i])
+	{
+		if (ft_is)
+	}
+	free_split_char(split_color);
+	return (TRUE);
 }
