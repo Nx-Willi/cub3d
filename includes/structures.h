@@ -6,11 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/06 16:20:32 by wdebotte         ###   ########.fr       */
-=======
-/*   Updated: 2022/08/06 18:21:04 by xle-baux         ###   ########.fr       */
->>>>>>> xle-baux
+/*   Updated: 2022/08/06 18:34:47 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +14,7 @@
 # define STRUCTURES_H
 
 typedef struct s_info		t_info;
-<<<<<<< HEAD
-=======
 typedef struct s_color		t_color;
->>>>>>> xle-baux
 typedef struct s_check_map	t_check_map;
 // typedef struct s_color		t_color;
 typedef struct s_mlx		t_mlx;
@@ -49,20 +42,9 @@ struct	s_mlx
 
 struct	s_color
 {
-<<<<<<< HEAD
-	int		test;
-	char	*no_texture;	
-	char	*so_texture;
-	char	*we_texture;
-	char	*ea_texture;
-	// t_color		floor_color;
-	// t_color 	ceilling_color;
-	t_mlx	mlx;
-=======
 	int	r;
 	int	g;
 	int	b;
->>>>>>> xle-baux
 };
 
 struct	s_check_map
