@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 14:59:21 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 16:29:04 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int		count_map_lines(char *map);
 int		is_empty_line(char *line);
 
 void	free_split_char(char **str);
+void	init_info_struct(t_info *info);
 
-t_info	parser(char *map);
-t_info	init_info_struct(void);
+int	parser(t_info *info, char *map);
 
 //__>TMP_TOOLS__________________________________________________________________
 void	print_info_struct(t_info info);
