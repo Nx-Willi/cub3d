@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:35:23 by xlb               #+#    #+#             */
-/*   Updated: 2022/08/06 14:17:35 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 15:23:00 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	is_empty_line(char *line)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (!line)
 		return (TRUE);
-	while (line[i])
+	while (line[++i])
 	{
-		if (line[i] != ' ' || line[i] != '\n' || line[i] != '\0')
+		if (ft_isspace(line[i]) == 0 && line[i] != '\0')
 			return (FALSE);
 	}
 	return (TRUE);

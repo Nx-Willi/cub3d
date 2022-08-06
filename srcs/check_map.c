@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:56:16 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/06 14:20:47 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 15:45:26 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ static int	is_dup_info(t_check_map *check_map_struct, char *line)
 		free_split_char(split_line);
 		return (printf("Error\nMore than one type ID \"SO\"\n"), FALSE);
 	}
-	else if (ft_strncmp(split_line[0], "EA", 3) == 0 && check_map_struct->ea == TRUE)
+	else if (ft_strncmp(split_line[0], "WE", 3) == 0 && check_map_struct->we == TRUE)
 	{
 		free_split_char(split_line);
-		return (printf("Error\nMore than one type ID \"EA\"\n"), FALSE);
+		return (printf("Error\nMore than one type ID \"WE\"\n"), FALSE);
 	}
 	else if (ft_strncmp(split_line[0], "EA", 3) == 0 && check_map_struct->ea == TRUE)
 	{
@@ -131,9 +131,9 @@ static int	is_map(char *line)
 	i = -1;
 	while (line[++i])
 	{
-		if (line[i] != ' ' || line[i] != '0' || line[i] != '1'
-			|| line[i] != 'N' || line[i] != 'S' || line[i] != 'E'
-			|| line[i] != 'W')
+		if (line[i] != ' ' && line[i] != '0' && line[i] != '1'
+			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
+			&& line[i] != 'W' && line[i] != '\n' && line[i] != '\0')
 			return (FALSE);
 	}
 	return (TRUE);

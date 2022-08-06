@@ -6,11 +6,11 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:08:52 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/06 14:22:55 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 15:39:19 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "cub3d.h"
 
 static t_info	get_infos(char **lines);
 static t_info	get_type_id(t_info info, char **line);
