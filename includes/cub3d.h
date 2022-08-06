@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 14:59:21 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 15:47:59 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "structures.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>

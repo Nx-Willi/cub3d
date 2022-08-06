@@ -6,7 +6,7 @@
 #    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/06 14:28:12 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/06 15:44:27 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ HEADERS		= ${PATHHEADERS}
 
 CC			= clang
 CFLAGS		= -Wall -Wextra -Werror -g3
-INCS		= -I${PATHHEADERS} -I${PATHLIBFT}${PATHHEADERS}
+INCS		= -I${PATHHEADERS} -I${PATHLIBFT}${PATHHEADERS} -I${PATHLIBS}minilibx
 
 RM			= rm -rf
 MAKE		= make -C
