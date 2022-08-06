@@ -6,7 +6,7 @@
 #    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/06 14:08:31 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/06 14:25:04 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ NAME		= cub3d
 
 PATHSRCS	= srcs/
 PATHHEADERS	= includes/
-PATHLIBFT	= libft/
+PATHLIBS	= libs/
+PATHLIBFT	= ${PATHLIBS}libft/
+PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
 SRCS		= $(addprefix ${PATHSRCS}, main.c parser.c parcer_tools.c tmp_tools.c \
@@ -49,6 +51,8 @@ MAKE		= make -C
 NORM		= norminette
 
 LIBFT		= -L${PATHLIBFT} -lft
+MLX			= -L${PATHMLX} -lmlx -lXext -lX11
+LIBS		= ${LIBFT} ${MLX}
 
 ################################################################################
 # => RULES
@@ -63,8 +67,10 @@ all:		${NAME}
 ${NAME}:	${OBJS}
 				@echo "${BOLD}${GREEN}Building:${END}\tlibft.a"
 				@${MAKE} ${PATHLIBFT} >${PATHNULL}
+				@echo "${BOLD}${GREEN}Building:${END}\tminilibx"
+				@${MAKE} ${PATHMLX} >${PATHNULL}
 				@echo "${BOLD}${GREEN}Building:${END}\t${NAME}"
-				@${CC} ${OBJS} ${INCS} ${LIBFT} -o ${NAME} >${PATHNULL}
+				@${CC} ${OBJS} ${INCS} ${LIBS} -o ${NAME} >${PATHNULL}
 
 clean:
 				@echo "${BOLD}${RED}Removing:${END}\tAll .o files"
@@ -72,6 +78,8 @@ clean:
 
 fclean:		clean
 				@${MAKE} ${PATHLIBFT} fclean >${PATHNULL}
+				@echo "${BOLD}${RED}Removing:${END}\tMinilibx"
+				@${MAKE} ${PATHMLX} clean >${PATHNULL}
 				@echo "${BOLD}${RED}Removing:${END}\t${NAME}"
 				@${RM} ${NAME} >${PATHNULL}
 
