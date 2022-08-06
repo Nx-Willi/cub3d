@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tmp_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 12:15:40 by xle-baux         ###   ########.fr       */
+/*   Created: 2022/08/06 10:18:54 by xle-baux          #+#    #+#             */
+/*   Updated: 2022/08/06 10:21:35 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int args, char **argv)
+void	print_info_struct(t_info info)
 {
-	t_info	info;
-	
-	if (args != 2)
-		return (ft_putstr_fd("Error\n", 1), 1);
-	info = parser(argv[1]);
-	// print_info_struct(info);
-	if (info.test == 1)
-		return (1);
-	return (0);
+	printf("NO: %s\n", info.no_texture);
+	printf("SO: %s\n", info.so_texture);
+	printf("WE: %s\n", info.we_texture);
+	printf("EA: %s\n", info.ea_texture);
 }

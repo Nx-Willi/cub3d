@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xlb <xlb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:08:52 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/05 23:22:39 by xlb              ###   ########.fr       */
+/*   Updated: 2022/08/06 12:14:32 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,20 @@ t_info	parser(char *map)
     char    **lines;
 	t_info	info;
 
+	info = init_info_struct();
     lines = read_map(map);
+	if (check_map(lines) == FALSE)
+		return (info);
 	info = get_infos(lines);
 
 	
 
 
-	int i = 0;
-	while (lines[i])
-	{
-		printf("%s", lines[i++]);
-	}
+	// int i = 0;
+	// while (lines[i])
+	// {
+	// 	printf("%s", lines[i++]);
+	// }
 
 
 
@@ -50,7 +53,9 @@ static t_info	get_infos(char **line)
 		i++;
 	while (line[i])
 	{
-		split_line = ft_split(line[i], ' ');
+		split_line = ft_split(line[i++], ' ');
+		if (!line)
+			break ;
 		info = get_type_id(info, split_line);
 		free_split_char(split_line);
 		while (line[i] && is_empty_line(line[i]) == TRUE)
@@ -67,14 +72,14 @@ static t_info	get_type_id(t_info info ,char **line)
 	while (line[len])
 		len++;
 	if (len != 2)
-		return (printf("get_type_id ERROR\n"), info);
-	if (ft_strncmp(line[0], "NO", 2) == 0 && info.no_texture != NULL)
+		return (printf("get_type_id ERROR - len: %i\n", len), info);
+	if (ft_strncmp(line[0], "NO", 3) == 0 && info.no_texture == NULL)
 		info.no_texture = ft_strdup(line[1]);
-	else if (ft_strncmp(line[0], "SO", 2) == 0 && info.so_texture != NULL)
+	else if (ft_strncmp(line[0], "SO", 3) == 0 && info.so_texture == NULL)
 		info.so_texture = ft_strdup(line[1]);
-	else if (ft_strncmp(line[0], "WE", 2) == 0 && info.we_texture != NULL)
+	else if (ft_strncmp(line[0], "WE", 3) == 0 && info.we_texture == NULL)
 		info.we_texture = ft_strdup(line[1]);
-	else if (ft_strncmp(line[0], "EA", 2) == 0 && info.ea_texture != NULL)
+	else if (ft_strncmp(line[0], "EA", 3) == 0 && info.ea_texture == NULL)
 		info.ea_texture = ft_strdup(line[1]);
 	return (info);
 }
@@ -85,7 +90,7 @@ static char **read_map(char *map)
     int     fd;
     char    **line;
 
-	i = 0;
+	i = -1;
     line = (char **)malloc(sizeof(char *) * (count_map_lines(map) + 1));
 	if (!line)
 		return (NULL);
@@ -94,9 +99,10 @@ static char **read_map(char *map)
         return (NULL);
     while (1)
     {
-        line[i] = get_next_line(fd);
-        if (!line[i++])
+        line[++i] = get_next_line(fd);
+        if (!line[i])
             break ;
     }
+	line[i] = NULL;
     return (line);
 }
