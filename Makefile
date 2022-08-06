@@ -6,7 +6,7 @@
 #    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/06 15:44:27 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/06 16:36:43 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CYAN	= \033[96m
 # => VARIABLES
 ################################################################################
 
-NAME		= cub3d
+NAME		= cub3D
 
 PATHSRCS	= srcs/
 PATHHEADERS	= includes/
@@ -36,8 +36,8 @@ PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
 SRCS		= $(addprefix ${PATHSRCS}, main.c parser.c parcer_tools.c tmp_tools.c \
-									check_map.c)
-#			$(addprefix ${PATHSRCS}parsing/, file1.c file2.c file3.c)
+									check_map.c) \
+			$(addprefix ${PATHSRCS}utils/, exit.c file.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}
