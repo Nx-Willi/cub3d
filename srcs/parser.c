@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:08:52 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/06 16:28:45 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 17:11:57 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,17 @@ static int	get_type_id(t_info *info, char **line)
 		len++;
 	if (len != 2)
 		return (printf("get_type_id ERROR - len: %i\n", len), FALSE);
-	if (ft_strncmp(line[0], "NO", 3) == 0 && info->no_texture == NULL)
+	if (ft_strncmp(line[0], "NO", 3) == 0)
 		info->no_texture = ft_strdup(line[1]);
-	else if (ft_strncmp(line[0], "SO", 3) == 0 && info->so_texture == NULL)
+	else if (ft_strncmp(line[0], "SO", 3) == 0)
 		info->so_texture = ft_strdup(line[1]);
-	else if (ft_strncmp(line[0], "WE", 3) == 0 && info->we_texture == NULL)
+	else if (ft_strncmp(line[0], "WE", 3) == 0)
 		info->we_texture = ft_strdup(line[1]);
-	else if (ft_strncmp(line[0], "EA", 3) == 0 && info->ea_texture == NULL)
+	else if (ft_strncmp(line[0], "EA", 3) == 0)
+		info->ea_texture = ft_strdup(line[1]);
+	else if (ft_strncmp(line[0], "F", 2) == 0)
+		info->we_texture = ft_strdup(line[1]);
+	else if (ft_strncmp(line[0], "C", 2) == 0)
 		info->ea_texture = ft_strdup(line[1]);
 	return (TRUE);
 }

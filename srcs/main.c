@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 16:34:24 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 16:55:51 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int args, char **argv)
 		return (ft_putstr_fd("Error\n", 1), 1);
 	if (parser(&info, argv[1]) == FALSE)
 		return (1);
-	if (info.test == 1)
-		return (1);
+	print_info_struct(info);
 	return (0);
 }
