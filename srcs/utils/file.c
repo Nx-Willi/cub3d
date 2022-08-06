@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:36:48 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 17:26:14 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:26:30 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ static int	is_file_exist(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-	{
-		perror(path);
-		return (FALSE);
-	}
-	if (read(fd, "", 1) == -1)
 	{
 		perror(path);
 		return (FALSE);
