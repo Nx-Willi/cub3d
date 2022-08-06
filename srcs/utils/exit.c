@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iswhitespace.c                                     :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 10:22:18 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/04/04 10:27:58 by wdebotte         ###   ########.fr       */
+/*   Created: 2022/08/06 16:31:27 by wdebotte          #+#    #+#             */
+/*   Updated: 2022/08/06 16:33:31 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-int	is_whitespace(int c)
+void	exit_program(char *error, int status)
 {
-	if (c == ' ' || (c >= 9 && c <= 13))
-		return (1);
-	return (0);
+	if (error != NULL)
+		ft_putstr_fd(error, 2);
+	exit(status);
 }

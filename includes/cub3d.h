@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 16:29:04 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 16:59:52 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "structures.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -23,7 +24,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-//__>PARSING___________________________________________________________________
+//__>PARSING____________________________________________________________________
 int		check_map(char **map);
 int		count_map_lines(char *map);
 int		is_empty_line(char *line);
@@ -35,6 +36,12 @@ int	parser(t_info *info, char *map);
 
 //__>TMP_TOOLS__________________________________________________________________
 void	print_info_struct(t_info info);
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+//__>UTILS______________________________________________________________________
+int		check_file(char *path);
+
+void	exit_program(char *error, int status);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 #endif
