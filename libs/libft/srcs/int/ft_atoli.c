@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:41:53 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/04/04 10:25:54 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:14:39 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ long int	ft_atoli(const char *str)
 
 	number = 0;
 	is_negativ = 1;
-	while (*str && is_whitespace(*str))
+	while (*str && ft_isspace(*str) != 0)
 		str++;
 	if (*str && (*str == '-' || *str == '+'))
 		if (*(str++) == '-')
