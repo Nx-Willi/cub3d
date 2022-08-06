@@ -6,38 +6,26 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:08:52 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/06 12:14:32 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 14:22:55 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 static t_info	get_infos(char **lines);
-static t_info	get_type_id(t_info info ,char **line);
+static t_info	get_type_id(t_info info, char **line);
 static char		**read_map(char *map);
 
 t_info	parser(char *map)
 {
-    char    **lines;
+	char	**lines;
 	t_info	info;
 
 	info = init_info_struct();
-    lines = read_map(map);
+	lines = read_map(map);
 	if (check_map(lines) == FALSE)
 		return (info);
 	info = get_infos(lines);
-
-	
-
-
-	// int i = 0;
-	// while (lines[i])
-	// {
-	// 	printf("%s", lines[i++]);
-	// }
-
-
-
 	return (info);
 }
 
@@ -64,9 +52,9 @@ static t_info	get_infos(char **line)
 	return (info);
 }
 
-static t_info	get_type_id(t_info info ,char **line)
+static t_info	get_type_id(t_info info, char **line)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (line[len])
@@ -84,25 +72,25 @@ static t_info	get_type_id(t_info info ,char **line)
 	return (info);
 }
 
-static char **read_map(char *map)
+static char	**read_map(char *map)
 {
 	int		i;
-    int     fd;
-    char    **line;
+	int		fd;
+	char	**line;
 
 	i = -1;
-    line = (char **)malloc(sizeof(char *) * (count_map_lines(map) + 1));
+	line = (char **)malloc(sizeof(char *) * (count_map_lines(map) + 1));
 	if (!line)
 		return (NULL);
-    fd = open(map, O_RDONLY);
-    if (fd == -1)
-        return (NULL);
-    while (1)
-    {
-        line[++i] = get_next_line(fd);
-        if (!line[i])
-            break ;
-    }
+	fd = open(map, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	while (1)
+	{
+		line[++i] = get_next_line(fd);
+		if (!line[i])
+			break ;
+	}
 	line[i] = NULL;
-    return (line);
+	return (line);
 }
