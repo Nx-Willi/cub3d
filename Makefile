@@ -6,7 +6,7 @@
 #    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/06 14:25:04 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/06 14:28:12 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ ${NAME}:	${OBJS}
 				@echo "${BOLD}${GREEN}Building:${END}\tlibft.a"
 				@${MAKE} ${PATHLIBFT} >${PATHNULL}
 				@echo "${BOLD}${GREEN}Building:${END}\tminilibx"
-				@${MAKE} ${PATHMLX} >${PATHNULL}
+				@${MAKE} ${PATHMLX} >${PATHNULL} 2>${PATHNULL}
 				@echo "${BOLD}${GREEN}Building:${END}\t${NAME}"
 				@${CC} ${OBJS} ${INCS} ${LIBS} -o ${NAME} >${PATHNULL}
 
