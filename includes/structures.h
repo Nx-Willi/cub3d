@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 18:34:47 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:36:39 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ struct	s_info
 	char		*ea_texture;
 	t_color		floor_color;
 	t_color 	ceilling_color;
+	t_mlx		mlx;
 };
 
 #endif
