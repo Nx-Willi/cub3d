@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 15:41:14 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 16:27:21 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void draw_point(t_info *infos)
+static void	draw_point(t_info *infos)
 {
 	int		x;
 	int		y;
@@ -43,7 +43,7 @@ static void draw_point(t_info *infos)
 	my_mlx_pixel_put(&mlx->img, 150, 150, 0x00FFFFFF);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
 }
-// ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 static void	init_mlx(t_info *infos)
 {
@@ -53,7 +53,7 @@ static void	init_mlx(t_info *infos)
 	mlx->mlx = mlx_init();
 	if (mlx->mlx == NULL)
 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
-    mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
+	mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
 }
 
 int	main(int args, char **argv)
@@ -71,6 +71,5 @@ int	main(int args, char **argv)
 	draw_point(&info);
 	handler_hooks(&info);
 	mlx_loop(info.mlx.mlx);
-	free_info_struct(&info);
 	return (0);
 }

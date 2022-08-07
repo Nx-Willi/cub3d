@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:56:16 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/07 15:32:08 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 16:28:32 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ static t_check_info	init_check_info_struct(void)
 	return (check_info_struct);
 }
 
-static int			missing_info(t_check_info *check_info_struct)
+static int	missing_info(t_check_info *check_info_struct)
 {
 	if (check_info_struct->no == FALSE)
 		return (printf("Error\nInfo id \"NO\" is missing\n"), TRUE);

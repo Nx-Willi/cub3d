@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   handler_hooks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:41:43 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 14:29:01 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 16:29:21 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int key_handler(int keycode, t_info *info)
+static int	key_handler(int keycode, t_info *info)
 {
 	if (keycode == KEY_ESC)
 		exit_program(info, NULL, EXIT_SUCCESS);
@@ -25,7 +25,7 @@ static int	close_window(t_info *info)
 	return (0);
 }
 
-void    handler_hooks(t_info *info)
+void	handler_hooks(t_info *info)
 {
 	mlx_key_hook(info->mlx.window, key_handler, info);
 	mlx_hook(info->mlx.window, DESTROYNOTIFY, NOTIFYMASK, close_window, info);
