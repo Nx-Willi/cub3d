@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:56:16 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/06 15:45:26 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/06 17:13:32 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,32 @@ static int	is_info(t_check_map *check_map_struct, char *line)
 		len++;
 	if (len != 2)
 		return (FALSE);
-	if (ft_strncmp(split_line[0], "NO", 3) == 0 && check_map_struct->no == FALSE)
+	if (ft_strncmp(split_line[0], "NO", 3) == 0)
 	{
 		free_split_char(split_line);
 		return (check_map_struct->no = TRUE, TRUE);
 	}
-	else if (ft_strncmp(split_line[0], "SO", 3) == 0 && check_map_struct->so == FALSE)
+	else if (ft_strncmp(split_line[0], "SO", 3) == 0)
 	{
 		free_split_char(split_line);
 		return (check_map_struct->so = TRUE, TRUE);
 	}
-	else if (ft_strncmp(split_line[0], "WE", 3) == 0 && check_map_struct->we == FALSE)
+	else if (ft_strncmp(split_line[0], "WE", 3) == 0)
 	{
 		free_split_char(split_line);
 		return (check_map_struct->we = TRUE, TRUE);
 	}
-	else if (ft_strncmp(split_line[0], "EA", 3) == 0 && check_map_struct->ea == FALSE)
+	else if (ft_strncmp(split_line[0], "EA", 3) == 0)
 	{
 		free_split_char(split_line);
 		return (check_map_struct->ea = TRUE, TRUE);
 	}
-	else if (ft_strncmp(split_line[0], "F", 2) == 0 && check_map_struct->f_color == FALSE)
+	else if (ft_strncmp(split_line[0], "F", 2) == 0 && check_rgb_color(split_line[1]) == TRUE)
 	{
 		free_split_char(split_line);
 		return (check_map_struct->f_color = TRUE, TRUE);
 	}
-	else if (ft_strncmp(split_line[0], "C", 2) == 0 && check_map_struct->c_color == FALSE)
+	else if (ft_strncmp(split_line[0], "C", 2) == 0 && check_rgb_color(split_line[1]) == TRUE)
 	{
 		free_split_char(split_line);
 		return (check_map_struct->c_color = TRUE, TRUE);
