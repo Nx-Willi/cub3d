@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 14:35:10 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:16:31 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void draw_point(t_info *infos)
+static void	draw_point(t_info *infos)
 {
 	int		x;
 	int		y;
@@ -53,7 +53,7 @@ static void	init_mlx(t_info *infos)
 	mlx->mlx = mlx_init();
 	if (mlx->mlx == NULL)
 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
-    mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
+	mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
 }
 
 int	main(int args, char **argv)
@@ -68,7 +68,7 @@ int	main(int args, char **argv)
 		return (2);
 	init_mlx(&info);
 	draw_point(&info);
-	handler_hooks(&info);
+	handler_events(&info);
 	mlx_loop(info.mlx.mlx);
 	return (0);
 }
