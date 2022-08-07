@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:56:16 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/07 13:56:27 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:31:20 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int			is_info(t_check_info *check_info_struct, char *line);
 static int			is_dup_info(t_check_info *check_info_struct, char *line);
-static int			is_map(char *line);
+static int			missing_info(t_check_info *check_info_struct);
 static t_check_info	init_check_info_struct(void);
 
 int	check_info(char **map)
@@ -38,6 +38,8 @@ int	check_info(char **map)
 		}
 		i++;
 	}
+	if (missing_info(&check_info_struct) == TRUE)
+		return (FALSE);
 	return (TRUE);
 }
 
@@ -54,6 +56,7 @@ static int	is_info(t_check_info *check_info_struct, char *line)
 		return (FALSE);
 	if (ft_strncmp(split_line[0], "NO", 3) == 0)
 	{
+		printf(".sdfsdfdfdsf...");
 		free_split_char(split_line);
 		return (check_info_struct->no = TRUE, TRUE);
 	}
@@ -124,21 +127,6 @@ static int	is_dup_info(t_check_info *check_info_struct, char *line)
 	return (TRUE);
 }
 
-static int	is_map(char *line)
-{
-	int	i;
-
-	i = -1;
-	while (line[++i])
-	{
-		if (line[i] != ' ' && line[i] != '0' && line[i] != '1'
-			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
-			&& line[i] != 'W' && line[i] != '\n' && line[i] != '\0')
-			return (FALSE);
-	}
-	return (TRUE);
-}
-
 static t_check_info	init_check_info_struct(void)
 {
 	t_check_info	check_info_struct;
@@ -150,4 +138,21 @@ static t_check_info	init_check_info_struct(void)
 	check_info_struct.f_color = FALSE;
 	check_info_struct.c_color = FALSE;
 	return (check_info_struct);
+}
+
+static int			missing_info(t_check_info *check_info_struct)
+{
+	if (check_info_struct->no == FALSE)
+		return (printf("Error\n \"NO\" info id is missing"), TRUE);
+	if (check_info_struct->so == FALSE)
+		return (printf("Error\n \"SO\" info id is missing"), TRUE);
+	if (check_info_struct->we == FALSE)
+		return (printf("Error\n \"WE\" info id is missing"), TRUE);
+	if (check_info_struct->ea == FALSE)
+		return (printf("Error\n \"EA\" info id is missing"), TRUE);
+	if (check_info_struct->f_color == FALSE)
+		return (printf("Error\n \"F\" info id is missing"), TRUE);
+	if (check_info_struct->c_color == FALSE)
+		return (printf("Error\n \"C\" info id is missing"), TRUE);
+	return (FALSE);
 }
