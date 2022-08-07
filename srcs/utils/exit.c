@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:31:27 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 16:27:37 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 16:42:42 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// tmp: mlx_destroy_image
 static void	free_mlx(t_mlx *mlx)
 {
 	mlx_loop_end(mlx->mlx);
 	mlx_destroy_window(mlx->mlx, mlx->window);
+	mlx_destroy_image(mlx->mlx, mlx->img.img);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 }
