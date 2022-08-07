@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 15:36:33 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:37:44 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,29 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-// static void draw_point(t_info *infos)
-// {
-// 	t_mlx	*mlx;
+static void draw_point(t_info *infos)
+{
+	t_mlx	*mlx;
 
-// 	mlx = &infos->mlx;
-// 	mlx->img.img = mlx_new_image(mlx->mlx, 1920, 1080);
-// 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
-// 			&mlx->img.line_length, &mlx->img.endian);
-// 	my_mlx_pixel_put(&mlx->img, 5, 5, 0x00FF0000);
-// 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
-// }
+	mlx = &infos->mlx;
+	mlx->img.img = mlx_new_image(mlx->mlx, 1920, 1080);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
+			&mlx->img.line_length, &mlx->img.endian);
+	my_mlx_pixel_put(&mlx->img, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
+}
 // ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-// static void	init_mlx(t_info *infos)
-// {
-// 	t_mlx	*mlx;
+static void	init_mlx(t_info *infos)
+{
+	t_mlx	*mlx;
 
-// 	mlx = &infos->mlx;
-// 	mlx->mlx = mlx_init();
-// 	if (mlx->mlx == NULL)
-// 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
-//     mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
-// }
+	mlx = &infos->mlx;
+	mlx->mlx = mlx_init();
+	if (mlx->mlx == NULL)
+		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
+    mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
+}
 
 int	main(int args, char **argv)
 {
@@ -55,9 +55,9 @@ int	main(int args, char **argv)
 	if (parser(&info, argv[1]) == FALSE)
 		return (2);
 	print_info_struct(info);
-	// init_mlx(&info);
-	// draw_point(&info);
-	// mlx_loop(info.mlx.mlx);
+	init_mlx(&info);
+	draw_point(&info);
+	mlx_loop(info.mlx.mlx);
 	free_info_struct(&info);
 	return (0);
 }
