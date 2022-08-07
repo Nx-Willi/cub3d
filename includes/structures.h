@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 17:23:49 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:35:17 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ struct	s_color
 
 struct	s_check_info
 {
-	int	no;	
+	int	no;
 	int	so;
 	int	we;
 	int	ea;
@@ -65,7 +65,7 @@ struct	s_info
 	char		*we_texture;
 	char		*ea_texture;
 	t_color		floor_color;
-	t_color 	ceilling_color;
+	t_color		ceilling_color;
 	t_mlx		mlx;
 };
 
