@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handler_hooks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:41:43 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 16:31:08 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:21:32 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ static int	close_window(t_info *info)
 void	handler_events(t_info *info)
 {
 	mlx_key_hook(info->mlx.window, key_handler, info);
-	mlx_hook(info->mlx.window, DESTROYNOTIFY, STRUCTNOTIFYMASK,
+	mlx_hook(info->mlx.window, DestroyNotify, StructureNotifyMask,
 		close_window, info);
 }

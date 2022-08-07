@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 16:44:49 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:27:02 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ static void	init_mlx(t_info *infos)
 	mlx->mlx = mlx_init();
 	if (mlx->mlx == NULL)
 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
-	mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
+	mlx_get_screen_size(mlx->mlx, &mlx->win_width, &mlx->win_heigth);
+	mlx->window = mlx_new_window(mlx->mlx, mlx->win_width, mlx->win_heigth,
+			"cub3D");
 }
 
 int	main(int args, char **argv)
@@ -62,7 +64,8 @@ int	main(int args, char **argv)
 	t_info	info;
 
 	if (args != 2)
-		return (ft_putstr_fd("Error\nUsage: ./cub3D \'maps.cub\'\n", 1), 1);
+		return (ft_putstr_fd("Error\nUsage: ./cub3D \'map_name.cub\'\n",
+				1), 1);
 	if (!check_file(argv[1]))
 		return (1);
 	if (parser(&info, argv[1]) == FALSE)
