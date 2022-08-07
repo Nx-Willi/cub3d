@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 16:17:21 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 16:56:15 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,7 @@
 # include <math.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-
-# ifdef __linux__
-#  define DESTROYNOTIFY		33
-# else
-#  define DESTROYNOTIFY		17
-# endif
-# define STRUCTNOTIFYMASK	(1L<<17)
+# include <X11/Xlib.h>
 
 enum	e_keys
 {

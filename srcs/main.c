@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 16:31:34 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 16:44:49 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+//__>TEMPORARY_________________________________________________________________
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
