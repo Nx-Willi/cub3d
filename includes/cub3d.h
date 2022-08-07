@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 14:08:56 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:26:16 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+# ifdef __linux__
+#  define DESTROYNOTIFY 33
+# else
+#  define DESTROYNOTIFY 17
+# endif
+# define NOTIFYMASK (1L<<17)
+
+enum	e_keys
+{
+	KEY_ESC = 65307
+};
+
 //__>PARSING____________________________________________________________________
 int		parser(t_info *info, char *map);
 int		check_info(char **map);
@@ -39,7 +51,7 @@ void	print_info_struct(t_info info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>HOOKS______________________________________________________________________
-void    handler_hooks(t_mlx *mlx);
+void    handler_hooks(t_info *info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>UTILS______________________________________________________________________
