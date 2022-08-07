@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:31:27 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 14:04:49 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:27:28 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,12 @@ void	exit_program(t_info *info, char *error, int status)
 	if (error != NULL)
 		ft_putstr_fd(error, 2);
 	exit(status);
+}
+
+void	free_info_struct(t_info *info)
+{
+	free(info->no_texture);
+	free(info->so_texture);
+	free(info->we_texture);
+	free(info->ea_texture);
 }

@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:35:23 by xlb               #+#    #+#             */
-/*   Updated: 2022/08/07 13:49:58 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:12:58 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	count_map_lines(char *map)
 		len++;
 		free(line);
 	}
+	close(fd);
 	return (len + 1);
 }
 
@@ -68,7 +69,10 @@ void	free_split_char(char **str)
 
 	i = 0;
 	while (str[i])
-		free(str[i++]);
+	{
+		free(str[i]);
+		i++;
+	}
 	free(str);
 }
 
@@ -84,5 +88,20 @@ int	check_rgb_color(char *color)
 	if (i != 3)
 		return (FALSE);
 	free_split_char(split_color);
+	return (TRUE);
+}
+
+int	is_map(char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i])
+	{
+		if (line[i] != ' ' && line[i] != '0' && line[i] != '1'
+			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
+			&& line[i] != 'W' && line[i] != '\n' && line[i] != '\0')
+			return (FALSE);
+	}
 	return (TRUE);
 }
