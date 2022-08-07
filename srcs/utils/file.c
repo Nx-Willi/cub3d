@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:36:48 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 18:26:30 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:14:45 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	is_file_exist(char *path)
 		ft_putstr_fd(": The file is empty!\n", 2);
 		return (FALSE);
 	}
+	close(fd);
 	return (TRUE);
 }
 

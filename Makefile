@@ -6,7 +6,7 @@
 #    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/07 13:55:43 by xle-baux         ###   ########.fr        #
+#    Updated: 2022/08/07 14:55:56 by xle-baux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ PATHNULL	= /dev/null
 
 SRCS		= $(addprefix ${PATHSRCS}, main.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c \
-								get_infos.c parser_tools.c tmp_parser_tools.c) \
+								get_infos.c get_map.c parser_tools.c tmp_parser_tools.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c)
 
 OBJS		= ${SRCS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:35:23 by xlb               #+#    #+#             */
-/*   Updated: 2022/08/07 14:18:09 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:12:58 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	count_map_lines(char *map)
 		len++;
 		free(line);
 	}
+	close(fd);
 	return (len + 1);
 }
 
@@ -68,7 +69,10 @@ void	free_split_char(char **str)
 
 	i = 0;
 	while (str[i])
-		free(str[i++]);
+	{
+		free(str[i]);
+		i++;
+	}
 	free(str);
 }
 

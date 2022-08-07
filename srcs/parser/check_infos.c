@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:56:16 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/07 14:31:20 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:32:08 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,9 @@ static int	is_info(t_check_info *check_info_struct, char *line)
 	while (split_line[len])
 		len++;
 	if (len != 2)
-		return (FALSE);
+		return (free_split_char(split_line), FALSE);
 	if (ft_strncmp(split_line[0], "NO", 3) == 0)
 	{
-		printf(".sdfsdfdfdsf...");
 		free_split_char(split_line);
 		return (check_info_struct->no = TRUE, TRUE);
 	}
@@ -124,6 +123,7 @@ static int	is_dup_info(t_check_info *check_info_struct, char *line)
 		free_split_char(split_line);
 		return (printf("Error\nMore than one type ID \"C\"\n"), FALSE);
 	}
+	free_split_char(split_line);
 	return (TRUE);
 }
 
@@ -143,16 +143,16 @@ static t_check_info	init_check_info_struct(void)
 static int			missing_info(t_check_info *check_info_struct)
 {
 	if (check_info_struct->no == FALSE)
-		return (printf("Error\n \"NO\" info id is missing"), TRUE);
+		return (printf("Error\nInfo id \"NO\" is missing\n"), TRUE);
 	if (check_info_struct->so == FALSE)
-		return (printf("Error\n \"SO\" info id is missing"), TRUE);
+		return (printf("Error\nInfo id \"SO\" is missing\n"), TRUE);
 	if (check_info_struct->we == FALSE)
-		return (printf("Error\n \"WE\" info id is missing"), TRUE);
+		return (printf("Error\nInfo id \"WE\" is missing\n"), TRUE);
 	if (check_info_struct->ea == FALSE)
-		return (printf("Error\n \"EA\" info id is missing"), TRUE);
+		return (printf("Error\nInfo id \"EA\" is missing\n"), TRUE);
 	if (check_info_struct->f_color == FALSE)
-		return (printf("Error\n \"F\" info id is missing"), TRUE);
+		return (printf("Error\nInfo id \"F\" is missing\n"), TRUE);
 	if (check_info_struct->c_color == FALSE)
-		return (printf("Error\n \"C\" info id is missing"), TRUE);
+		return (printf("Error\nInfo id \"C\" is missing\n"), TRUE);
 	return (FALSE);
 }
