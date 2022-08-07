@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 13:51:04 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:00:16 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-static void	init_mlx(t_info *infos)
-{
-	t_mlx	*mlx;
-
-	mlx = &infos->mlx;
-	mlx->mlx = mlx_init();
-	if (mlx->mlx == NULL)
-		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
-    mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
-}
-
 static void draw_point(t_info *infos)
 {
     t_mlx	*mlx;
@@ -41,6 +30,18 @@ static void draw_point(t_info *infos)
 								&mlx->img.endian);
 	my_mlx_pixel_put(&mlx->img, 5, 5, 0x00FF0000);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
+}
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+static void	init_mlx(t_info *infos)
+{
+	t_mlx	*mlx;
+
+	mlx = &infos->mlx;
+	mlx->mlx = mlx_init();
+	if (mlx->mlx == NULL)
+		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
+    mlx->window = mlx_new_window(mlx->mlx, 1920, 1080, "cub3D");
 }
 
 int	main(int args, char **argv)
