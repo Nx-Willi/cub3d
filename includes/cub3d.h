@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 17:35:10 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/07 18:39:47 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int		count_map_lines(char *map);
 int		is_empty_line(char *line);
 int		check_rgb_color(char *color);
 int		is_map(char *line);
+int		get_map(t_info *info, char **line);
+int		is_info(t_check_info *check_info_struct, char *line);
+int		is_dup_info(t_check_info *check_info_struct, char *line);
 
 void	get_infos(t_info *info, char **line);
 void	free_split_char(char **str);
