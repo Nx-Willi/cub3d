@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 14:53:13 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 17:30:01 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,15 @@ struct	s_check_info
 	int	ea;
 	int	f_color;
 	int	c_color;
-	int	start_map;
-	int end_map;
+	int	first_map_line;
+	int last_map_line;
+	int len_x;
+	int len_y;
 };
 
 struct	s_info
 {
+	char		**map;
 	char		*no_texture;	
 	char		*so_texture;
 	char		*we_texture;
