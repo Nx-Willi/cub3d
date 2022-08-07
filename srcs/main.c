@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 15:37:44 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 15:41:14 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,25 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 static void draw_point(t_info *infos)
 {
+	int		x;
+	int		y;
 	t_mlx	*mlx;
 
 	mlx = &infos->mlx;
 	mlx->img.img = mlx_new_image(mlx->mlx, 1920, 1080);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
-	my_mlx_pixel_put(&mlx->img, 5, 5, 0x00FF0000);
+	x = 100;
+	y = 100;
+	while (x <= 200)
+		my_mlx_pixel_put(&mlx->img, x++, y, 0x00FF0000);
+	while (y <= 200)
+		my_mlx_pixel_put(&mlx->img, x, y++, 0x00FF0000);
+	while (x >= 100)
+		my_mlx_pixel_put(&mlx->img, x--, y, 0x00FF0000);
+	while (y >= 100)
+		my_mlx_pixel_put(&mlx->img, x, y--, 0x00FF0000);
+	my_mlx_pixel_put(&mlx->img, 150, 150, 0x00FFFFFF);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
 }
 // ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -57,6 +69,7 @@ int	main(int args, char **argv)
 	print_info_struct(info);
 	init_mlx(&info);
 	draw_point(&info);
+	handler_hooks(&info);
 	mlx_loop(info.mlx.mlx);
 	free_info_struct(&info);
 	return (0);
