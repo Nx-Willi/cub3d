@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 18:36:39 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/07 13:44:48 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 typedef struct s_info		t_info;
 typedef struct s_color		t_color;
-typedef struct s_check_map	t_check_map;
-// typedef struct s_color		t_color;
+typedef struct s_check_info	t_check_info;
 typedef struct s_mlx		t_mlx;
 typedef struct s_data		t_data;
 
@@ -47,7 +46,7 @@ struct	s_color
 	int	b;
 };
 
-struct	s_check_map
+struct	s_check_info
 {
 	int	no;	
 	int	so;
