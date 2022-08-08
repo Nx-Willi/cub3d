@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/08 12:36:41 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/08 13:12:01 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ enum	e_keys
 
 enum	e_textures
 {
-	NO	= 0,
+	T_NO	= 0,
+	T_SO,
+	T_WE,
+	T_EA,
+	NO		= 100,
 	SO,
 	WE,
 	EA
