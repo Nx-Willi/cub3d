@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 14:55:13 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/07 18:31:15 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/08 12:22:03 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 
 	i = sizes->first_map_line;
 	j = 0;
-	info->map = (char **)malloc(sizeof(char *) * sizes->len_y + 1);
+	info->map = (char **)ft_calloc(sizeof(char *), sizes->len_y + 1);
 	if (info->map == NULL)
 		return (FALSE);
 	while (i <= sizes->last_map_line)

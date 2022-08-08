@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:31:27 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 16:42:42 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/08 12:27:11 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,19 @@ static void	free_mlx(t_mlx *mlx)
 
 void	free_info_struct(t_info *info)
 {
+	int	i;
+
+	i = 0;
 	free(info->no_texture);
 	free(info->so_texture);
 	free(info->we_texture);
 	free(info->ea_texture);
+	while(info->map[i])
+	{
+		free(info->map[i]);
+		i++;
+	}
+	free(info->map);
 }
 
 void	exit_program(t_info *info, char *error, int status)
