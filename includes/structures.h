@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 18:40:01 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/08 12:36:27 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ struct	s_check_info
 struct	s_info
 {
 	char		**map;
+	char		*textures[4];
 	char		*no_texture;	
 	char		*so_texture;
 	char		*we_texture;
