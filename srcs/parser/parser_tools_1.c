@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:35:23 by xlb               #+#    #+#             */
-/*   Updated: 2022/08/10 11:01:23 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:13:37 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,6 @@ int	is_empty_line(char *line)
 	return (TRUE);
 }
 
-void	free_split_char(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
 int	check_rgb_color(char *color)
 {
 	int		i;
@@ -73,7 +60,7 @@ int	check_rgb_color(char *color)
 		i++;
 	if (i != 3)
 		return (FALSE);
-	free_split_char(split_color);
+	free_char_char(split_color);
 	return (TRUE);
 }
 

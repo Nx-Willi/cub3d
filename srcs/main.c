@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 17:07:23 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:15:18 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int args, char **argv)
 	if (!check_file(argv[1]))
 		return (1);
 	if (parser(&info, argv[1]) == FALSE)
-		return (2);
+		return (free_info_struct(&info), 2);
 	print_info_struct(info);
 	init_mlx(&info);
 	draw_point(&info);

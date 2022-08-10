@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:08:52 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/07 17:31:50 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:10:30 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	parser(t_info *info, char *map)
 	init_info_struct(info);
 	lines = read_map(map);
 	if (check_info(lines) == FALSE)
-		return (free_split_char(lines), FALSE);
+		return (free_char_char(lines), FALSE);
 	get_infos(info, lines);
 	if (get_map(info, lines) == FALSE)
-		return (free_split_char(lines), FALSE);
-	free_split_char(lines);
+		return (free_char_char(lines), FALSE);
+	free_char_char(lines);
 	return (TRUE);
 }
 

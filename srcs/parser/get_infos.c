@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:52:02 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/08 13:26:24 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:12:44 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	get_infos(t_info *info, char **line)
 		if (!line)
 			break ;
 		get_type_id(info, split_line);
-		free_split_char(split_line);
+		free_char_char(split_line);
 		while (line[i] && is_empty_line(line[i]) == TRUE)
 			i++;
 	}
@@ -67,5 +67,5 @@ static void	get_rgb_color(t_color *struct_color, char *color)
 	struct_color->r = ft_atoi(split_color[0]);
 	struct_color->g = ft_atoi(split_color[1]);
 	struct_color->b = ft_atoi(split_color[2]);
-	free_split_char(split_color);
+	free_char_char(split_color);
 }
