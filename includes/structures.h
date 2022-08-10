@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 13:15:25 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/10 16:55:12 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ struct	s_check_info
 
 struct	s_info
 {
+	int			**i_map;
 	char		**map;
 	char		*textures[4];
 	t_color		floor_color;

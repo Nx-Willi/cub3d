@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 14:55:13 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/10 13:06:08 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 16:54:54 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,23 @@ int	get_map(t_info *info, char **line)
 	return (TRUE);
 }
 
+static void	print_int_tab(int **tab)
+{
+	int	i;
+	int	n;
+
+	printf("\n");
+	i = -1;
+	while (tab[++i] != NULL)
+	{
+		n = -1;
+		while (tab[i][++n] != TAB_NULL)
+			printf("%i ", tab[i][n]);
+		printf("\n");
+	}
+	printf("\n");
+}
+
 static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 {
 	int		i;
@@ -47,6 +64,10 @@ static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 		i++;
 	}
 	info->map[j] = NULL;
+	info->i_map = tab_char_to_int(info, sizes);
+	if (info->i_map == NULL)
+		return (FALSE);
+	print_int_tab(info->i_map);
 	// if (map_to_int(info, sizes ,char_map) == FALSE)
 	// 	return (FALSE);
 	return (TRUE);
