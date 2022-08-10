@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 14:14:26 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 17:26:16 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # include <fcntl.h>
 # include <X11/Xlib.h>
 
-//__>ENUMS_____________________________________________________________________
+# define TAB_NULL	2
+
+//__>ENUMS______________________________________________________________________
 enum	e_keys
 {
 	KEY_LEFT	= 65361,
@@ -35,7 +37,7 @@ enum	e_keys
 	KEY_S		= 115,
 	KEY_D		= 100,
 	KEY_ESC		= 65307
-};
+};	
 
 enum	e_textures
 {
@@ -67,7 +69,6 @@ int		is_map(char *line);
 int		get_map(t_info *info, char **line);
 int		is_info(t_check_info *check_info_struct, char *line);
 int		is_dup_info(t_check_info *check_info_struct, char *line);
-int		check_map(t_info *info, t_check_info *check_info, char **map);
 
 void	get_infos(t_info *info, char **line);
 void	get_first_last_line(t_check_info *sizes, char **line);
@@ -87,7 +88,10 @@ void	handler_events(t_info *info);
 int		check_file(char *path);
 
 void	exit_program(t_info *info, char *error, int status);
+//____>FREES____________________________________________________________________
+void	free_mlx(t_mlx *mlx);
 void	free_info_struct(t_info *info);
+void	free_int_tab(int **tab, int *limit);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 #endif

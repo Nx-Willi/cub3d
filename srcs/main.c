@@ -6,14 +6,14 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/07 18:30:22 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/10 17:07:23 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 //__>TEMPORARY_________________________________________________________________
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -21,16 +21,13 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	draw_point(t_info *infos)
+static void	draw_shit(t_mlx *mlx)
 {
-	t_mlx	*mlx;
+	int	x;
+	int	y;
 
-	mlx = &infos->mlx;
-	mlx->img.img = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
-	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
-			&mlx->img.line_length, &mlx->img.endian);
-	int	x = mlx->win_width / 2 - 250;
-	int	y = mlx->win_heigth / 2 - 250;
+	x = mlx->win_width / 2 - 250;
+	y = mlx->win_heigth / 2 - 250;
 	while (x <= mlx->win_width / 2 + 250)
 		my_mlx_pixel_put(&mlx->img, x++, y, 0x00FFFFFF);
 	while (y <= mlx->win_heigth / 2 + 250)
@@ -47,6 +44,17 @@ static void	draw_point(t_info *infos)
 	y = mlx->win_heigth / 2;
 	while (x <= mlx->win_width / 2 + 50)
 		my_mlx_pixel_put(&mlx->img, x++, y, 0x00FFFFFF);
+}
+
+static void	draw_point(t_info *infos)
+{
+	t_mlx	*mlx;
+
+	mlx = &infos->mlx;
+	mlx->img.img = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
+			&mlx->img.line_length, &mlx->img.endian);
+	draw_shit(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
 }
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾

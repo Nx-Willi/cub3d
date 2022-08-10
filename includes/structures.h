@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 14:22:45 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:34:05 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ struct	s_check_info
 	int	so;
 	int	we;
 	int	ea;
-	int spawning_position;
+	int	spawning_position;
 	int	f_color;
 	int	c_color;
 	int	first_map_line;
@@ -63,10 +63,10 @@ struct	s_check_info
 
 struct	s_info
 {
+	int			**i_map;
 	int			start_x;
 	int			start_y;
 	int			start_orientation;
-	char		**map;
 	char		*textures[4];
 	t_color		floor_color;
 	t_color		ceilling_color;
