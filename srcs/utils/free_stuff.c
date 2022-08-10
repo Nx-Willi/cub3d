@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:11:31 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 16:56:08 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/10 17:00:41 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	free_info_struct(t_info *info)
 	free(info->textures[T_SO]);
 	free(info->textures[T_WE]);
 	free(info->textures[T_EA]);
-	while(info->map[i])
+	while (info->map[i])
 	{
 		free(info->map[i]);
 		i++;
