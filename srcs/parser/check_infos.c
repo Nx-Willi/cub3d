@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:56:16 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/07 18:05:36 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 10:59:01 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_check_info	init_check_info_struct(void)
 	check_info_struct.so = FALSE;
 	check_info_struct.we = FALSE;
 	check_info_struct.ea = FALSE;
+	check_info_struct.spawning_position = FALSE;
 	check_info_struct.f_color = FALSE;
 	check_info_struct.c_color = FALSE;
 	return (check_info_struct);

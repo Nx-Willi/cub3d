@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_tools.c                                     :+:      :+:    :+:   */
+/*   parser_tools_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 18:35:23 by xlb               #+#    #+#             */
-/*   Updated: 2022/08/07 16:28:50 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 11:01:23 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,6 @@ int	is_empty_line(char *line)
 			return (FALSE);
 	}
 	return (TRUE);
-}
-
-void	init_info_struct(t_info *info)
-{
-	info->no_texture = NULL;
-	info->so_texture = NULL;
-	info->we_texture = NULL;
-	info->ea_texture = NULL;
-	info->floor_color.r = -1;
-	info->floor_color.g = -1;
-	info->floor_color.b = -1;
-	info->ceilling_color.r = -1;
-	info->ceilling_color.g = -1;
-	info->ceilling_color.b = -1;
 }
 
 void	free_split_char(char **str)

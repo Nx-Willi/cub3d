@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 13:12:33 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:15:25 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ struct	s_check_info
 	int	so;
 	int	we;
 	int	ea;
+	int spawning_position;
 	int	f_color;
 	int	c_color;
 	int	first_map_line;
@@ -64,10 +65,6 @@ struct	s_info
 {
 	char		**map;
 	char		*textures[4];
-	char		*no_texture;	
-	char		*so_texture;
-	char		*we_texture;
-	char		*ea_texture;
 	t_color		floor_color;
 	t_color		ceilling_color;
 	t_mlx		mlx;
