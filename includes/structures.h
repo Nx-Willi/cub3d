@@ -6,20 +6,22 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 17:09:16 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:11:51 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct s_info		t_info;
-typedef struct s_color		t_color;
-typedef struct s_check_info	t_check_info;
-typedef struct s_mlx		t_mlx;
 typedef struct s_data		t_data;
+typedef struct s_mlx		t_mlx;
+typedef struct s_player		t_player;
+typedef struct s_check_info	t_check_info;
+typedef struct s_color		t_color;
+typedef struct s_info		t_info;
 
-//__>MLX_______________________________________________________________________
+
+//__>MLX________________________________________________________________________
 struct	s_data
 {
 	void	*img;
@@ -36,6 +38,21 @@ struct	s_mlx
 	int		win_width;
 	int		win_heigth;
 	t_data	img;
+};
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+//__>IN_GAME____________________________________________________________________
+struct	s_player
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+};
+
+struct	s_ingame
+{
+	t_player	player;
 };
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
