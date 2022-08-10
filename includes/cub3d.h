@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 12:27:46 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:07:23 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,11 @@ int		is_info(t_check_info *check_info_struct, char *line);
 int		is_dup_info(t_check_info *check_info_struct, char *line);
 
 void	get_infos(t_info *info, char **line);
+void	get_first_last_line(t_check_info *sizes, char **line);
+void	get_largest_map_line(t_check_info *sizes, char **line);
 void	free_split_char(char **str);
 void	init_info_struct(t_info *info);
+void	init_sizes_struct(t_check_info *sizes);
 //__>TMP_TOOLS__________________________________________________________________
 void	print_info_struct(t_info info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾

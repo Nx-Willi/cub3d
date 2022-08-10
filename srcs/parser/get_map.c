@@ -6,21 +6,18 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 14:55:13 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/07 18:31:15 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:06:08 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	get_first_last_line(t_check_info *sizes, char **line);
-static void	get_largest_map_line(t_check_info *sizes, char **line);
 static int	fill_map(t_info *info, t_check_info *sizes, char **line);
-static void init_sizes_struct(t_check_info *sizes);
+// static int map_to_int(t_info *info, t_check_info *sizes, char **char_map);
 
 int	get_map(t_info *info, char **line)
 {
-	(void)info;
-	t_check_info sizes;
+	t_check_info	sizes;
 
 	init_sizes_struct(&sizes);
 	get_first_last_line(&sizes, line);
@@ -35,12 +32,12 @@ int	get_map(t_info *info, char **line)
 
 static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = sizes->first_map_line;
 	j = 0;
-	info->map = (char **)malloc(sizeof(char *) * sizes->len_y + 1);
+	info->map = (char **)malloc(sizeof(char *) * (sizes->len_y + 1));
 	if (info->map == NULL)
 		return (FALSE);
 	while (i <= sizes->last_map_line)
@@ -49,54 +46,42 @@ static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 		j++;
 		i++;
 	}
+	info->map[j] = NULL;
+	// if (map_to_int(info, sizes ,char_map) == FALSE)
+	// 	return (FALSE);
 	return (TRUE);
 }
 
-static void	get_first_last_line(t_check_info *sizes, char **line)
-{
-	int	i;
+// static int	map_to_int(t_info *info, t_check_info *sizes, char **char_map)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	while (line[i])
-	{
-		if (is_empty_line(line[i]) == FALSE && is_map(line[i]) == TRUE)
-		{
-			sizes->first_map_line = i;
-			break ;
-		}
-		i++;
-	}
-	while (line[i])
-		i++;
-	while (i > 0)
-	{
-		if (is_empty_line(line[i]) == FALSE && is_map(line[i]) == TRUE)
-		{
-			sizes->last_map_line = i;
-			break ;
-		}
-		i--;
-	}
-}
-
-static void	get_largest_map_line(t_check_info *sizes, char **line)
-{
-	int	i;
-
-	i = sizes->first_map_line;
-	while (i <= sizes->last_map_line)
-	{
-		if ((int)ft_strlen(line[i]) > sizes->len_x)
-			sizes->len_x = ft_strlen(line[i]);
-		i++;
-	}
-
-}
-
-static void init_sizes_struct(t_check_info *sizes)
-{
-	sizes->first_map_line = -1;
-	sizes->last_map_line = -1;
-	sizes->len_x = -1;
-	sizes->len_y = -1;
-}
+// 	j = 0;
+// 	info->map = (int **)malloc(sizeof(int *) * (sizes->len_y + 1));
+// 	if (info->map == NULL)
+// 		return (FALSE);
+// 	while(char_map[j] != NULL)
+// 	{
+// 		i = 0;
+// 		info->map[j] = malloc(sizeof(int) * (sizes->len_x + 1));
+// 		if (info->map[j] == NULL)
+// 			return (FALSE);
+// 		while (i <= sizes->len_x)
+// 		{
+// 			if (!char_map[j][i])
+// 				info->map[j][i] = 3;
+// 			else if (ft_isspace(char_map[j][i]) != FALSE)
+// 				info->map[j][i] = 3;
+// 			else if (char_map[j][i] && char_map[j][i] == '0')
+// 				info->map[j][i] = 8;
+// 			else if (char_map[j][i] && char_map[j][i] == '1')
+// 				info->map[j][i] = WALL;
+// 			else
+// 				info->map[j][i] = 9;
+// 			i++;
+// 		}
+// 		j++;
+// 	}
+// 	return (TRUE);
+// }
