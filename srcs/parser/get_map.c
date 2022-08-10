@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 14:55:13 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/10 13:06:08 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 17:01:44 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	get_map(t_info *info, char **line)
 	get_largest_map_line(&sizes, line);
 	if (fill_map(info, &sizes, line) == FALSE)
 		return (FALSE);
+	// if (check_map(info, &sizes, line) == FALSE)
+	// 	return (FALSE);
 	printf("len_x: %d\nlen_y: %d\n", sizes.len_x, sizes.len_y);
 	printf("First: %d\nLast: %d\n", sizes.first_map_line, sizes.last_map_line);
 	return (TRUE);
@@ -47,41 +49,7 @@ static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 		i++;
 	}
 	info->map[j] = NULL;
-	// if (map_to_int(info, sizes ,char_map) == FALSE)
-	// 	return (FALSE);
+	if (check_map(info, sizes, info->map) == FALSE)
+		return (FALSE);
 	return (TRUE);
 }
-
-// static int	map_to_int(t_info *info, t_check_info *sizes, char **char_map)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	j = 0;
-// 	info->map = (int **)malloc(sizeof(int *) * (sizes->len_y + 1));
-// 	if (info->map == NULL)
-// 		return (FALSE);
-// 	while(char_map[j] != NULL)
-// 	{
-// 		i = 0;
-// 		info->map[j] = malloc(sizeof(int) * (sizes->len_x + 1));
-// 		if (info->map[j] == NULL)
-// 			return (FALSE);
-// 		while (i <= sizes->len_x)
-// 		{
-// 			if (!char_map[j][i])
-// 				info->map[j][i] = 3;
-// 			else if (ft_isspace(char_map[j][i]) != FALSE)
-// 				info->map[j][i] = 3;
-// 			else if (char_map[j][i] && char_map[j][i] == '0')
-// 				info->map[j][i] = 8;
-// 			else if (char_map[j][i] && char_map[j][i] == '1')
-// 				info->map[j][i] = WALL;
-// 			else
-// 				info->map[j][i] = 9;
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// 	return (TRUE);
-// }

@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:00:17 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/10 13:05:01 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:30:29 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	get_largest_map_line(t_check_info *sizes, char **line)
 
 void	init_info_struct(t_info *info)
 {
-	info->map = NULL;
+	// info->map = NULL;
 	info->textures[T_NO] = NULL;
 	info->textures[T_SO] = NULL;
 	info->textures[T_WE] = NULL;
@@ -73,4 +73,5 @@ void	init_sizes_struct(t_check_info *sizes)
 	sizes->last_map_line = -1;
 	sizes->len_x = -1;
 	sizes->len_y = -1;
+	sizes->spawning_position = FALSE;
 }

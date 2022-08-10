@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 13:07:23 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:14:26 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		is_map(char *line);
 int		get_map(t_info *info, char **line);
 int		is_info(t_check_info *check_info_struct, char *line);
 int		is_dup_info(t_check_info *check_info_struct, char *line);
+int		check_map(t_info *info, t_check_info *check_info, char **map);
 
 void	get_infos(t_info *info, char **line);
 void	get_first_last_line(t_check_info *sizes, char **line);
