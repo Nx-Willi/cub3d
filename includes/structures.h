@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/08 13:24:33 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:02:11 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ struct	s_check_info
 	int	so;
 	int	we;
 	int	ea;
+	int spawning_position;
 	int	f_color;
 	int	c_color;
 	int	first_map_line;
