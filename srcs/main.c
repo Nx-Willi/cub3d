@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/11 16:44:16 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/11 22:06:11 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int	main(int args, char **argv)
 		return (2);
 	print_info_struct(info);
 	init_mlx(&info);
-	do_raycasting(&info);
 	handler_events(&info);
+	do_raycasting(&info);
 	mlx_loop(info.mlx.mlx);
 	return (0);
 }

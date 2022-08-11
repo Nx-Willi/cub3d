@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
+#    By: william <william@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/11 13:50:40 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/11 21:49:06 by william          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ NORM		= norminette
 
 LIBFT		= -L${PATHLIBFT} -lft
 MLX			= -L${PATHMLX} -lmlx -lXext -lX11
-LIBS		= ${LIBFT} ${MLX}
+MATH		= -lm
+LIBS		= ${LIBFT} ${MLX} ${MATH}
 
 ################################################################################
 # => RULES
