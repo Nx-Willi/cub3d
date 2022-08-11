@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 16:56:14 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:43:15 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,13 @@ void	init_info_struct(t_info *info);
 void	init_sizes_struct(t_check_info *sizes);
 //__>TMP_TOOLS__________________________________________________________________
 void	print_info_struct(t_info info);
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+//__>RAYCAST____________________________________________________________________
+void	do_raycasting(t_info *infos);
+void	init_player(t_info *infos);
+void	init_plane(t_info *infos);
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>HOOKS______________________________________________________________________

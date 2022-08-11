@@ -6,7 +6,7 @@
 #    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/10 14:17:23 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/11 13:50:40 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c) \
 								tab_char_to_int.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
+			$(addprefix ${PATHSRCS}raycast/, raycast.c init.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}
