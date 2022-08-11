@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:02:00 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/10 18:22:10 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:06:49 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,26 @@ int	check_map(t_info *info, t_check_info *check_info, char **map)
 	int	i;
 	int	j;
 
-	j = 0;
-	while (map[j])
+	j = -1;
+	while (map[++j])
 	{
-		i = 0;
-		while (map[j][i])
+		i = -1;
+		while (map[j][++i])
 		{
 			if (check_info->spawning_position == FALSE
 				&& (map[j][i] == 'N' || map[j][i] == 'S'
 				|| map[j][i] == 'W' || map[j][i] == 'E'))
-				{
-					check_info->spawning_position = TRUE;
-					info->start_y = j;
-					info->start_x = i;
-					info->start_orientation = get_player_orientation(map[j][i]);
-				}
+			{
+				check_info->spawning_position = TRUE;
+				info->start_y = j;
+				info->start_x = i;
+				info->start_orientation = get_player_orientation(map[j][i]);
+			}
 			else if (check_info->spawning_position == TRUE
 				&& (map[j][i] == 'N' || map[j][i] == 'S'
 				|| map[j][i] == 'W' || map[j][i] == 'E'))
-				{
-					return (FALSE);
-				}
-			i++;
+				return (printf("Error\nSpawn point twice\n"), FALSE);
 		}
-		j++;
 	}
 	return (TRUE);
 }

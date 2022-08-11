@@ -6,7 +6,7 @@
 #    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/10 17:32:02 by xle-baux         ###   ########.fr        #
+#    Updated: 2022/08/11 13:27:40 by xle-baux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c) \
 								get_infos.c get_map.c check_map.c \
 								parser_tools_1.c parser_tools_2.c \
 								tab_char_to_int.c tmp_parser_tools.c) \
-			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c) \
+			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
+								ft_split_piscine.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
 
 OBJS		= ${SRCS:.c=.o}

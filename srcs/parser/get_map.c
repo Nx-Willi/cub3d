@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 14:55:13 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/10 18:27:44 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:10:11 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 	char_map[j] = NULL;
 	if (check_map(info, sizes, char_map) == FALSE)
 		return (free_char_char(char_map), FALSE);
-	info->i_map = tab_char_to_int(info, sizes, char_map);
+	info->i_map = tab_char_to_int(sizes, char_map);
 	if (info->i_map == NULL)
 		return (FALSE);
 	free_char_char(char_map);

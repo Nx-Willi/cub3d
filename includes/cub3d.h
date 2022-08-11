@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 18:01:59 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:09:31 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		get_map(t_info *info, char **line);
 int		is_info(t_check_info *check_info_struct, char *line);
 int		is_dup_info(t_check_info *check_info_struct, char *line);
 int		check_map(t_info *info, t_check_info *check_info, char **map);
-int		**tab_char_to_int(t_info *infos, t_check_info *t_infos, char **char_map);
+int		**tab_char_to_int(t_check_info *t_infos, char **char_map);
 
 void	get_infos(t_info *info, char **line);
 void	get_first_last_line(t_check_info *sizes, char **line);
@@ -88,6 +88,8 @@ void	handler_events(t_info *info);
 
 //__>UTILS______________________________________________________________________
 int		check_file(char *path);
+
+char	**ft_split_piscine(char *str, char *charset);
 
 void	exit_program(t_info *info, char *error, int status);
 //____>FREES____________________________________________________________________
