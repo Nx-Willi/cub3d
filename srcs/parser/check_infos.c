@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:56:16 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/10 10:59:01 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:08:19 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ static t_check_info	init_check_info_struct(void)
 	check_info_struct.f_color = FALSE;
 	check_info_struct.c_color = FALSE;
 	return (check_info_struct);
+}
+
+int	check_rgb_color(char *color)
+{
+	int		i;
+	char	**split_color;
+
+	i = -1;
+	while (color[++i + 1])
+	{
+		if (color[i] == ',' && color[i + 1] == ',')
+			return (FALSE);
+	}
+	i = 0;
+	split_color = ft_split(color, ',');
+	while (split_color[i])
+	{
+		if (is_strnum(split_color[i]) == FALSE || ft_strlen(split_color[i]) > 4
+			|| ft_atoi(split_color[i]) > 255 || ft_atoi(split_color[i]) < 0)
+			return (free_char_char(split_color), FALSE);
+		i++;
+	}
+	if (i != 3)
+		return (free_char_char(split_color), FALSE);
+	free_char_char(split_color);
+	return (TRUE);
 }
 
 static int	missing_info(t_check_info *check_info_struct)

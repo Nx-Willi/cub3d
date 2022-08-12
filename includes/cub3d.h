@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:33:39 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 11:39:57 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int		is_map(char *line);
 int		get_map(t_info *info, char **line);
 int		is_info(t_check_info *check_info_struct, char *line);
 int		is_dup_info(t_check_info *check_info_struct, char *line);
-int		**tab_char_to_int(t_info *infos	, t_check_info *t_infos);
+int		check_map(t_info *info, t_check_info *check_info, char **map);
+int		**tab_char_to_int(t_check_info *t_infos, char **char_map);
 
 void	get_infos(t_info *info, char **line);
 void	get_first_last_line(t_check_info *sizes, char **line);
@@ -85,6 +86,7 @@ void	print_info_struct(t_info info);
 void	do_raycasting(t_info *infos);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+void	minimap(t_info *infos);
 
 //__>HOOKS______________________________________________________________________
 void	handler_events(t_info *info);
@@ -93,9 +95,12 @@ void	handler_events(t_info *info);
 //__>UTILS______________________________________________________________________
 int		check_file(char *path);
 
+char	**ft_split_piscine(char *str, char *charset);
+
 void	exit_program(t_info *info, char *error, int status);
 //____>FREES____________________________________________________________________
 void	free_mlx(t_mlx *mlx);
+void	free_char_char(char **str);
 void	free_info_struct(t_info *info);
 void	free_int_tab(int **tab, int *limit);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾

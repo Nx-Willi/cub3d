@@ -6,7 +6,7 @@
 #    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/12 11:32:55 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/12 11:39:04 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,13 @@ PATHLIBFT	= ${PATHLIBS}libft/
 PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
-SRCS		= $(addprefix ${PATHSRCS}, main.c) \
+SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c is_info.c \
-								get_infos.c get_map.c parser_tools_1.c parser_tools_2.c tmp_parser_tools.c \
-								tab_char_to_int.c) \
-			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c) \
+								get_infos.c get_map.c check_map.c \
+								parser_tools_1.c parser_tools_2.c \
+								tab_char_to_int.c tmp_parser_tools.c) \
+			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
+								ft_split_piscine.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
 			$(addprefix ${PATHSRCS}raycast/, raycastlodev.c)
 

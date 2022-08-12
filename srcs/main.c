@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:36:29 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 11:40:49 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int args, char **argv)
 	if (!check_file(argv[1]))
 		return (1);
 	if (parser(&info, argv[1]) == FALSE)
-		return (2);
+		return (free_info_struct(&info), 2);
 	print_info_struct(info);
 	init_mlx(&info);
 	handler_events(&info);

@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:35:44 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 11:40:05 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,17 @@ struct	s_check_info
 	int	f_color;
 	int	c_color;
 	int	first_map_line;
-	int	last_map_line;
-	int	len_x;
-	int	len_y;
+	int last_map_line;
+	int len_x;
+	int len_y;
 };
 
 struct	s_info
 {
 	int			**i_map;
-	char		**map;
+	int			start_x;
+	int			start_y;
+	int			start_orientation;
 	char		*textures[4];
 	t_color		floor_color;
 	t_color		ceilling_color;
