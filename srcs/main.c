@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/11 22:06:11 by william          ###   ########.fr       */
+/*   Updated: 2022/08/12 11:36:29 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	main(int args, char **argv)
 {
 	t_info	info;
 
-	info.game.infos = &info;
 	if (args != 2)
 		return (ft_putstr_fd("Error\nUsage: ./cub3D \'map_name.cub\'\n",
 				1), 1);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: william <william@student.42.fr>            +#+  +:+       +#+         #
+#    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/11 21:49:06 by william          ###   ########.fr        #
+#    Updated: 2022/08/12 11:32:55 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c) \
 								tab_char_to_int.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
-			$(addprefix ${PATHSRCS}raycast/, raycast.c init.c)
+			$(addprefix ${PATHSRCS}raycast/, raycastlodev.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}
