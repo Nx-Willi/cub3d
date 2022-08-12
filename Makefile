@@ -6,7 +6,7 @@
 #    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/12 11:39:04 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/12 14:08:05 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,9 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c) \
 								parser_tools_1.c parser_tools_2.c \
 								tab_char_to_int.c tmp_parser_tools.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
-								ft_split_piscine.c) \
+								ft_split_piscine.c my_mlx_pixel_put.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
-			$(addprefix ${PATHSRCS}raycast/, raycastlodev.c)
+			$(addprefix ${PATHSRCS}raycast/, raycast.c initialize.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}

@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:39:57 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:16:04 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <fcntl.h>
 # include <X11/Xlib.h>
 
-# define TAB_NULL	2
+# define TAB_NULL	3
 
 //__>ENUMS______________________________________________________________________
 enum	e_keys
@@ -84,7 +84,11 @@ void	print_info_struct(t_info info);
 
 //__>RAYCAST____________________________________________________________________
 void	do_raycasting(t_info *infos);
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+void	get_initial_vector_direction(t_game *game);
+void	ray_calculs(t_game *game, int x);
+void	get_step_for_ray(t_game *game);
+void	get_next_hitten_wall(t_game *game);
+void	get_wall_and_draw_distance(t_game *game);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 void	minimap(t_info *infos);
 
@@ -98,6 +102,7 @@ int		check_file(char *path);
 char	**ft_split_piscine(char *str, char *charset);
 
 void	exit_program(t_info *info, char *error, int status);
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 //____>FREES____________________________________________________________________
 void	free_mlx(t_mlx *mlx);
 void	free_char_char(char **str);

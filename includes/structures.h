@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:40:05 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:23:34 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 typedef struct s_data		t_data;
 typedef struct s_mlx		t_mlx;
 //__>TYPE_FOR_GAME______________________________________________________________
-//Stuff to do
+typedef struct s_player		t_player;
+typedef struct s_ray		t_ray;
+typedef struct s_draw		t_draw;
+typedef struct s_game		t_game;
 //__>TYPE_PARSING_______________________________________________________________
 typedef struct s_check_info	t_check_info;
 typedef struct s_color		t_color;
@@ -42,6 +45,49 @@ struct	s_mlx
 	int		win_width;
 	int		win_heigth;
 	t_data	img;
+};
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+//__>Raycast____________________________________________________________________
+struct	s_player
+{
+	int		posX;
+	int		posY;
+};
+
+struct	s_ray
+{
+	int		stepX;
+	int		stepY;
+	int		side;
+	double	sideDistX;
+	double	sideDistY;
+	double	vecDirX;
+	double	vecDirY;
+	double	rayDirX;
+	double	rayDirY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+};
+
+struct	s_draw
+{
+	int		startDraw;
+	int		endDraw;
+};
+
+struct	s_game
+{
+	int			mapX;
+	int			mapY;
+	double		camX;
+	double		planePosX;
+	double		planePosY;
+	t_player	player;
+	t_ray		ray;
+	t_draw		draw;
+	t_info		*infos;
 };
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
@@ -77,6 +123,7 @@ struct	s_info
 	t_color		floor_color;
 	t_color		ceilling_color;
 	t_mlx		mlx;
+	t_game		game;
 };
 
 #endif

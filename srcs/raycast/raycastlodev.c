@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:23:37 by william           #+#    #+#             */
-/*   Updated: 2022/08/12 11:36:04 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 13:56:16 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,6 @@ int worldMap[24][24]=
   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
-// static void	get_initial_vector_direction(t_info *infos)
-// {
-// 	int		orientation;
-// 	t_ray	*ray;
-
-// 	ray = &(infos->game.ray);
-// 	//orientation = infos->start_orientation;
-// 	orientation = NO;
-// 	if (orientation == NO || orientation == SO)
-// 	{
-// 		ray->vecDirX = 0;
-// 		if (orientation == NO)
-// 			ray->vecDirY = 1;
-// 		else
-// 			ray->vecDirY = -1;
-// 	}
-// 	else if (orientation == WE || orientation == EA)
-// 	{
-// 		if (orientation == WE)
-// 			ray->vecDirX = -1;
-// 		else
-// 			ray->vecDirX = 1;
-// 		ray->vecDirY = 0;
-// 	}
-// }
-
 static void	draw_vertical_line(t_info *infos, int x, int drawStart,
 			int drawEnd, int color)
 {
@@ -82,8 +56,8 @@ static void	draw_vertical_line(t_info *infos, int x, int drawStart,
 void	do_raycasting(t_info *infos)
 {
 	// Start position
-	double	posX = 22;
-	double	posY = 12;
+	double	init_posX = 22;
+	double	init_posY = 12;
 	// Initial direction vector
 	double	dirX = -1;
 	double	dirY = 0;
@@ -99,8 +73,8 @@ void	do_raycasting(t_info *infos)
 		double	rayDirX = dirX + planeX * cameraX;
 		double	rayDirY = dirY + planeY * cameraX;
 		// Position in map
-		int	mapX = (int)posX;
-		int	mapY = (int)posY;
+		int	posX = (int)init_posX;
+		int	posY = (int)init_posY;
 		// length of ray from position to next x | y side
 		double	sideDistX;
 		double	sideDistY;
@@ -120,22 +94,22 @@ void	do_raycasting(t_info *infos)
 		if(rayDirX < 0)
 		{
 			stepX = -1;
-			sideDistX = (posX - mapX) * deltaDistX;
+			sideDistX = (init_posX - posX) * deltaDistX;
 		}
 		else
 		{
 			stepX = 1;
-			sideDistX = (mapX + 1.0 - posX) * deltaDistX;
+			sideDistX = (posX + 1.0 - init_posX) * deltaDistX;
 		}
 		if(rayDirY < 0)
 		{
 			stepY = -1;
-			sideDistY = (posY - mapY) * deltaDistY;
+			sideDistY = (init_posY - posY) * deltaDistY;
 		}
 		else
 		{
 			stepY = 1;
-			sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+			sideDistY = (posY + 1.0 - init_posY) * deltaDistY;
 		}
 		//perform DDA
 		while(hit == 0)
@@ -144,17 +118,17 @@ void	do_raycasting(t_info *infos)
 			if(sideDistX < sideDistY)
 			{
 				sideDistX += deltaDistX;
-				mapX += stepX;
+				posX += stepX;
 				side = 0;
 			}
 			else
 			{
 				sideDistY += deltaDistY;
-				mapY += stepY;
+				posY += stepY;
 				side = 1;
 			}
 			//Check if ray has hit a wall
-			if(worldMap[mapX][mapY] > 0)
+			if(worldMap[posX][posY] > 0)
 				hit = 1;
 		}
 		if( side == 0)
@@ -172,12 +146,12 @@ void	do_raycasting(t_info *infos)
 		if(drawEnd >= h)
 			drawEnd = h - 1;
 		int	color;
-		if (worldMap[mapX][mapY] == 1)
+		if (worldMap[posX][posY] == 1)
 			color = 0x00FF0000;
 		else
 			color = 0x0000FF00;
 		draw_vertical_line(infos, x, drawStart, drawEnd, color);
-		mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.window,
-			infos->mlx.img.img, 0, 0);
 	}
+	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.window,
+		infos->mlx.img.img, 0, 0);
 }
