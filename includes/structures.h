@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:40:05 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 12:43:27 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ struct	s_info
 	int			start_x;
 	int			start_y;
 	int			start_orientation;
+	int			len_x;
+	int			len_y;
 	char		*textures[4];
 	t_color		floor_color;
 	t_color		ceilling_color;
