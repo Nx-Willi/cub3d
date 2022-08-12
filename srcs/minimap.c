@@ -6,20 +6,20 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 15:19:58 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/12 11:34:44 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/12 11:47:41 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+/* static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-
+ */
 static void	draw_cube(t_mlx *mlx, int start_x, int start_y)
 {
 	int	x;
@@ -32,7 +32,7 @@ static void	draw_cube(t_mlx *mlx, int start_x, int start_y)
 		printf("toto");
 		x = start_x;
 		while (x <= start_x + 10)
-			my_mlx_pixel_put(&mlx->img, x++, y, 0x00FFFFFF);
+			my_mlx_pixel_put(mlx, x++, y, 0x00FFFFFF);
 		y--;
 	}
 }
