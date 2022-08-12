@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 15:25:19 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:44:07 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	get_wall_and_draw_distance(t_game *game)
 		game->ray.perpWallDist = game->ray.sideDistX - game->ray.deltaDistX;
 	else
 		game->ray.perpWallDist = game->ray.sideDistY - game->ray.deltaDistY;
-	line_height = game->infos->mlx.win_heigth / game->ray.perpWallDist;
+	line_height = (int)(game->infos->mlx.win_heigth / game->ray.perpWallDist);
 	game->draw.startDraw = -line_height / 2 + game->infos->mlx.win_heigth / 2;
 	if (game->draw.startDraw < 0)
 		game->draw.startDraw = 0;

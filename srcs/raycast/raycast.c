@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:56:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 15:32:07 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:44:07 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	do_raycasting(t_info *infos)
 	int		width;
 	t_game	*game;
 
-	infos->i_map[4][6] = 2;
 	infos->game.infos = infos;
 	game = &infos->game;
 	initalize_variables(game);
@@ -53,7 +52,7 @@ void	do_raycasting(t_info *infos)
 		get_step_for_ray(game);
 		get_next_hitten_wall(game);
 		get_wall_and_draw_distance(game);
-		if (infos->i_map[game->mapY][game->mapX] == -1 || infos->i_map[game->mapY][game->mapX] == 2)
+		if (infos->i_map[game->mapY][game->mapX] == -1)
 		{
 			printf("red\n");
 			color = 0x00FF0000;
@@ -61,7 +60,7 @@ void	do_raycasting(t_info *infos)
 		else if (infos->i_map[game->mapY][game->mapX] == 1)
 			color = 0x0000FF00;
 		draw_vertical_line(infos, x, &game->draw, color);
+		mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.window,
+			infos->mlx.img.img, 0, 0);
 	}
-	mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.window,
-		infos->mlx.img.img, 0, 0);
 }
