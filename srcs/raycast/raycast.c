@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:56:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/14 15:26:05 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/14 16:01:44 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static void	initalize_variables(t_game *game)
 {
-	game->ray.init_pos_x = game->infos->start_x;
-	game->ray.init_pos_y = game->infos->start_y;
-	printf("%i | %i\n", game->infos->start_x, game->infos->start_y);
+	game->ray.init_pos_x = game->infos->start_x + 0.5;
+	game->ray.init_pos_y = game->infos->start_y + 0.5;
 	get_initial_vector_direction(game);
 	game->planepos_x = 0;
 	game->planepos_y = 0.66;

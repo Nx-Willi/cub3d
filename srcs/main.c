@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:55:32 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:58:43 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	init_mlx(t_info *infos)
 	if (mlx->mlx == NULL)
 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
 	mlx_get_screen_size(mlx->mlx, &mlx->win_width, &mlx->win_heigth);
+	mlx->win_width -= 800;
+	mlx->win_heigth -= 500;
 	mlx->window = mlx_new_window(mlx->mlx, mlx->win_width, mlx->win_heigth,
 			"cub3D");
 	mlx->img.img = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
