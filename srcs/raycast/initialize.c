@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+1/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
@@ -18,14 +18,14 @@
 // same thing for the direction East and West with the x coordinate.
 void	get_initial_vector_direction(t_game *game)
 {
-	int		orientation;
+	int	orientation;
 
 	orientation = game->infos->start_orientation;
 	if (orientation == NO || orientation == SO)
 	{
 		game->ray.vecDirX = 0;
 		if (orientation == NO)
-			game->ray.vecDirY = 1;	
+			game->ray.vecDirY = 1;
 		else
 			game->ray.vecDirY = -1;
 	}
