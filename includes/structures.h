@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 14:23:34 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:12:57 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 typedef struct s_data		t_data;
 typedef struct s_mlx		t_mlx;
 //__>TYPE_FOR_GAME______________________________________________________________
-typedef struct s_player		t_player;
 typedef struct s_ray		t_ray;
 typedef struct s_draw		t_draw;
 typedef struct s_game		t_game;
@@ -49,42 +48,37 @@ struct	s_mlx
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>Raycast____________________________________________________________________
-struct	s_player
-{
-	int		posX;
-	int		posY;
-};
-
 struct	s_ray
 {
-	int		stepX;
-	int		stepY;
+	int		step_x;
+	int		step_y;
 	int		side;
-	double	sideDistX;
-	double	sideDistY;
-	double	vecDirX;
-	double	vecDirY;
-	double	rayDirX;
-	double	rayDirY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
+	int		pos_x;
+	int		pos_y;
+	double	init_pos_x;
+	double	init_pos_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	vecdir_x;
+	double	vecdir_y;
+	double	raydir_x;
+	double	raydir_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	walldist;
 };
 
 struct	s_draw
 {
-	int		startDraw;
-	int		endDraw;
+	int		startdraw;
+	int		enddraw;
 };
 
 struct	s_game
 {
-	int			mapX;
-	int			mapY;
-	double		camX;
-	double		planePosX;
-	double		planePosY;
-	t_player	player;
+	double		cam_x;
+	double		planepos_x;
+	double		planepos_y;
 	t_ray		ray;
 	t_draw		draw;
 	t_info		*infos;
@@ -108,9 +102,9 @@ struct	s_check_info
 	int	f_color;
 	int	c_color;
 	int	first_map_line;
-	int last_map_line;
-	int len_x;
-	int len_y;
+	int	last_map_line;
+	int	len_x;
+	int	len_y;
 };
 
 struct	s_info

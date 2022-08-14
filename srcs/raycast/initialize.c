@@ -1,4 +1,4 @@
-1/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 15:44:07 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:12:28 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,62 +23,63 @@ void	get_initial_vector_direction(t_game *game)
 	orientation = game->infos->start_orientation;
 	if (orientation == NO || orientation == SO)
 	{
-		game->ray.vecDirX = 0;
+		game->ray.vecdir_x = 0;
 		if (orientation == NO)
-			game->ray.vecDirY = 1;
+			game->ray.vecdir_y = 1;
 		else
-			game->ray.vecDirY = -1;
+			game->ray.vecdir_y = -1;
 	}
 	else if (orientation == WE || orientation == EA)
 	{
 		if (orientation == WE)
-			game->ray.vecDirX = -1;
+			game->ray.vecdir_x = -1;
 		else
-			game->ray.vecDirX = 1;
-		game->ray.vecDirY = 0;
+			game->ray.vecdir_x = 1;
+		game->ray.vecdir_y = 0;
 	}
+	printf("vecX: %f | vecY: %f\n", game->ray.vecdir_x, game->ray.vecdir_y);
 }
 
 void	ray_calculs(t_game *game, int x)
 {
-	game->camX = 2 * x / game->infos->mlx.win_width - 1;
-	game->ray.rayDirX = game->ray.vecDirX + game->planePosX
-		* game->camX;
-	game->ray.rayDirY = game->ray.vecDirY + game->planePosY
-		* game->camX;
-	game->mapX = (int)game->player.posX;
-	game->mapY = (int)game->player.posY;
-	game->ray.deltaDistX = sqrt(1 + (game->ray.rayDirY * game->ray.rayDirY)
-			/ (game->ray.rayDirX * game->ray.rayDirX));
-	game->ray.deltaDistY = sqrt(1 + (game->ray.rayDirX * game->ray.rayDirX)
-			/ (game->ray.rayDirY * game->ray.rayDirY));
+	game->cam_x = 2 * x / (double)game->infos->mlx.win_width - 1;
+	game->ray.raydir_x = game->ray.vecdir_x + game->planepos_x
+		* game->cam_x;
+	game->ray.raydir_y = game->ray.vecdir_y + game->planepos_y
+		* game->cam_x;
+	game->ray.pos_x = (int)game->ray.init_pos_x;
+	game->ray.pos_y = (int)game->ray.init_pos_y;
+	game->ray.deltadist_x = sqrt(1 + (game->ray.raydir_y * game->ray.raydir_y)
+			/ (game->ray.raydir_x * game->ray.raydir_x));
+	game->ray.deltadist_y = sqrt(1 + (game->ray.raydir_x * game->ray.raydir_x)
+			/ (game->ray.raydir_y * game->ray.raydir_y));
 }
 
 void	get_step_for_ray(t_game *game)
 {
-	if (game->ray.rayDirX < 0)
+	if (game->ray.raydir_x < 0)
 	{
-		game->ray.stepX = -1;
-		game->ray.sideDistX = (game->player.posX - game->mapX)
-			* game->ray.deltaDistX;
+		game->ray.step_x = -1;
+		game->ray.sidedist_x = (game->ray.init_pos_x - game->ray.pos_x)
+			* game->ray.deltadist_x;
 	}
 	else
 	{
-		game->ray.stepX = 1;
-		game->ray.sideDistX = (game->mapX + 1.0 - game->player.posX)
-			* game->ray.deltaDistX;
+		game->ray.step_x = 1;
+		game->ray.sidedist_x = (game->ray.pos_x + 1.0 - game->ray.init_pos_x)
+			* game->ray.deltadist_x;
 	}
-	if (game->ray.rayDirY < 0)
+	if (game->ray.raydir_y < 0)
 	{
-		game->ray.stepY = -1;
-		game->ray.sideDistY = (game->player.posY - game->mapY)
-			* game->ray.deltaDistY;
+		game->ray.step_y = -1;
+		game->ray.sidedist_y = (game->ray.init_pos_y - game->ray.pos_y)
+			* game->ray.deltadist_y;
 	}
 	else
 	{
-		game->ray.stepY = 1;
-		game->ray.sideDistY = (game->mapY + 1.0 - game->player.posY)
-			* game->ray.deltaDistY;
+		game->ray.step_y = 1;
+		game->ray.sidedist_y = (game->ray.pos_y + 1.0 - game->ray.init_pos_y)
+			* game->ray.deltadist_y;
 	}
 }
 
@@ -89,20 +90,21 @@ void	get_next_hitten_wall(t_game *game)
 	hit = FALSE;
 	while (hit == FALSE)
 	{
-		if (game->ray.sideDistX < game->ray.sideDistY)
+		if (game->ray.sidedist_x < game->ray.sidedist_y)
 		{
-			game->ray.sideDistX += game->ray.deltaDistX;
-			game->mapX += game->ray.stepX;
+			game->ray.sidedist_x += game->ray.deltadist_x;
+			game->ray.pos_x += game->ray.step_x;
 			game->ray.side = FALSE;
 		}
 		else
 		{
-			game->ray.sideDistY += game->ray.deltaDistY;
-			game->mapY += game->ray.stepY;
+			game->ray.sidedist_y += game->ray.deltadist_y;
+			game->ray.pos_y += game->ray.step_y;
 			game->ray.side = TRUE;
 		}
-		if (game->infos->i_map[game->mapY][game->mapX] > 0)
-			hit	= TRUE;
+		if (game->infos->i_map[game->ray.pos_y][game->ray.pos_x] > 0
+			|| game->infos->i_map[game->ray.pos_y][game->ray.pos_x] == -1)
+			hit = TRUE;
 	}
 }
 
@@ -111,14 +113,14 @@ void	get_wall_and_draw_distance(t_game *game)
 	int	line_height;
 
 	if (game->ray.side == FALSE)
-		game->ray.perpWallDist = game->ray.sideDistX - game->ray.deltaDistX;
+		game->ray.walldist = game->ray.sidedist_x - game->ray.deltadist_x;
 	else
-		game->ray.perpWallDist = game->ray.sideDistY - game->ray.deltaDistY;
-	line_height = (int)(game->infos->mlx.win_heigth / game->ray.perpWallDist);
-	game->draw.startDraw = -line_height / 2 + game->infos->mlx.win_heigth / 2;
-	if (game->draw.startDraw < 0)
-		game->draw.startDraw = 0;
-	game->draw.endDraw = line_height / 2 + game->infos->mlx.win_heigth / 2;
-	if (game->draw.endDraw >= game->infos->mlx.win_heigth)
-		game->draw.endDraw = game->infos->mlx.win_heigth - 1;
+		game->ray.walldist = game->ray.sidedist_y - game->ray.deltadist_y;
+	line_height = (int)(game->infos->mlx.win_heigth / game->ray.walldist);
+	game->draw.startdraw = -line_height / 2 + game->infos->mlx.win_heigth / 2;
+	if (game->draw.startdraw < 0)
+		game->draw.startdraw = 0;
+	game->draw.enddraw = line_height / 2 + game->infos->mlx.win_heigth / 2;
+	if (game->draw.enddraw >= game->infos->mlx.win_heigth)
+		game->draw.enddraw = game->infos->mlx.win_heigth - 1;
 }
