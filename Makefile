@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
+#    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/12 11:39:04 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/13 13:40:29 by xle-baux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PATHLIBFT	= ${PATHLIBS}libft/
 PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
-SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c) \
+SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c xlb_raycasting.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c is_info.c \
 								get_infos.c get_map.c check_map.c \
 								parser_tools_1.c parser_tools_2.c \
@@ -43,7 +43,7 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
 								ft_split_piscine.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
-			$(addprefix ${PATHSRCS}raycast/, raycastlodev.c)
+#			$(addprefix ${PATHSRCS}raycast/, raycastlodev.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}

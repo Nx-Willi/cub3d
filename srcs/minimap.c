@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 15:19:58 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/12 14:39:51 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:08:39 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	minimap(t_info *infos)
 			x++;
 		}
 		y++;
+		mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
 	}
-	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img.img, 0, 0);
+	
 }

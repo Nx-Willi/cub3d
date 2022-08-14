@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 11:40:49 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/13 13:40:57 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ int	main(int args, char **argv)
 	print_info_struct(info);
 	init_mlx(&info);
 	handler_events(&info);
-	do_raycasting(&info);
+	// do_raycasting(&info);
+	// minimap(&info);
+	raycasting(&info);
 	mlx_loop(info.mlx.mlx);
 	return (0);
 }
