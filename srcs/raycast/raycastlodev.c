@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 21:23:37 by william           #+#    #+#             */
-/*   Updated: 2022/08/14 13:50:13 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:33:16 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static void	draw_vertical_line(t_info *infos, int x, int drawStart,
 void	do_raycasting(t_info *infos)
 {
 	// Start position
-	double	init_posX = 3;
-	double	init_posY = 3;
+	double	init_pos_x = 3;
+	double	init_pos_y = 3;
 	// Initial direction vector
-	double	dirX = 1;
-	double	dirY = 0;
+	double	dirX = 0;
+	double	dirY = 1;
 	// 2D raycaster of camera plane
 	double	planeX = 0;
 	double	planeY = 0.66;
@@ -70,74 +70,74 @@ void	do_raycasting(t_info *infos)
 	{
 		// Calculate ray position
 		double	cameraX = 2 * x / (double)w - 1;
-		double	rayDirX = dirX + planeX * cameraX;
-		double	rayDirY = dirY + planeY * cameraX;
+		double	raydir_x = dirX + planeX * cameraX;
+		double	raydir_y = dirY + planeY * cameraX;
 		// Position in map
-		int	posX = (int)init_posX;
-		int	posY = (int)init_posY;
+		int	pos_x = (int)init_pos_x;
+		int	pos_y = (int)init_pos_y;
 		// length of ray from position to next x | y side
-		double	sideDistX;
-		double	sideDistY;
+		double	sidedist_x;
+		double	sidedist_y;
 		// lot of doc
-		double	deltaDistX = sqrt(1 + (rayDirY * rayDirY)
-			/ (rayDirX * rayDirX));
-		double	deltaDistY = sqrt(1 + (rayDirX * rayDirX)
-			/ (rayDirY * rayDirY));
-		double	perpWallDist;
+		double	deltadist_x = sqrt(1 + (raydir_y * raydir_y)
+			/ (raydir_x * raydir_x));
+		double	deltadist_y = sqrt(1 + (raydir_x * raydir_x)
+			/ (raydir_y * raydir_y));
+		double	walldist;
 		// Step direction
-		int	stepX;
-		int	stepY;
+		int	step_x;
+		int	step_y;
 		// Wall hit
 		int	hit = 0;
 		int	side;
 		// calculate step
-		if(rayDirX < 0)
+		if(raydir_x < 0)
 		{
-			stepX = -1;
-			sideDistX = (init_posX - posX) * deltaDistX;
+			step_x = -1;
+			sidedist_x = (init_pos_x - pos_x) * deltadist_x;
 		}
 		else
 		{
-			stepX = 1;
-			sideDistX = (posX + 1.0 - init_posX) * deltaDistX;
+			step_x = 1;
+			sidedist_x = (pos_x + 1.0 - init_pos_x) * deltadist_x;
 		}
-		if(rayDirY < 0)
+		if(raydir_y < 0)
 		{
-			stepY = -1;
-			sideDistY = (init_posY - posY) * deltaDistY;
+			step_y = -1;
+			sidedist_y = (init_pos_y - pos_y) * deltadist_y;
 		}
 		else
 		{
-			stepY = 1;
-			sideDistY = (posY + 1.0 - init_posY) * deltaDistY;
+			step_y = 1;
+			sidedist_y = (pos_y + 1.0 - init_pos_y) * deltadist_y;
 		}
 		//perform DDA
 		while(hit == 0)
 		{
 			//jump to next map square, either in x-direction, or in y-direction
-			if(sideDistX < sideDistY)
+			if(sidedist_x < sidedist_y)
 			{
-				sideDistX += deltaDistX;
-				posX += stepX;
+				sidedist_x += deltadist_x;
+				pos_x += step_x;
 				side = 0;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
-				posY += stepY;
+				sidedist_y += deltadist_y;
+				pos_y += step_y;
 				side = 1;
 			}
 			//Check if ray has hit a wall
-			if(infos->i_map[posY][posX] > 0 || infos->i_map[posY][posX] == -1)
+			if(infos->i_map[pos_y][pos_x] > 0 || infos->i_map[pos_y][pos_x] == -1)
 				hit = 1;
 		}
 		if( side == 0)
-			perpWallDist = (sideDistX - deltaDistX);
+			walldist = (sidedist_x - deltadist_x);
 		else
-			perpWallDist = (sideDistY - deltaDistY);
+			walldist = (sidedist_y - deltadist_y);
 		//Calculate height of line to draw on screen
 		int	h = infos->mlx.win_heigth;
-		int lineHeight = (int)(h / perpWallDist);
+		int lineHeight = (int)(h / walldist);
 		//calculate lowest and highest pixel to fill in current stripe
 		int drawStart = -lineHeight / 2 + h / 2;
 		if(drawStart < 0)
@@ -146,7 +146,7 @@ void	do_raycasting(t_info *infos)
 		if(drawEnd >= h)
 			drawEnd = h - 1;
 		int	color;
-		if (infos->i_map[posY][posX] == 1)	
+		if (infos->i_map[pos_y][pos_x] == 1)	
 			color = 0x00FF0000;
 		else
 			color = 0x0000FF00;
