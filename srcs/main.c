@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/14 15:58:43 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/15 12:12:24 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static void	init_mlx(t_info *infos)
 	if (mlx->mlx == NULL)
 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
 	mlx_get_screen_size(mlx->mlx, &mlx->win_width, &mlx->win_heigth);
-	mlx->win_width -= 800;
-	mlx->win_heigth -= 500;
+	// mlx->win_width -= 800;
+	// mlx->win_heigth -= 500;
+	mlx->win_width = 1920;
+	mlx->win_heigth = 1080;
 	mlx->window = mlx_new_window(mlx->mlx, mlx->win_width, mlx->win_heigth,
 			"cub3D");
 	mlx->img.img = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
@@ -44,6 +46,8 @@ int	main(int args, char **argv)
 	print_info_struct(info);
 	init_mlx(&info);
 	handler_events(&info);
+	info.game.infos = &info;
+	initalize_variables(&info.game);
 	do_raycasting(&info);
 	mlx_loop(info.mlx.mlx);
 	return (0);
