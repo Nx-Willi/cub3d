@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/14 15:12:57 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:02:37 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ typedef struct s_info		t_info;
 struct	s_data
 {
 	void	*img;
+	void	*img_tmp;
 	char	*addr;
+	char	*addr_tmp;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;

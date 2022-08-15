@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 12:32:02 by william          ###   ########.fr       */
+/*   Updated: 2022/08/15 13:31:48 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	get_initial_vector_direction(t_game *game)
 		else
 			game->ray.vecdir_x = 1;
 	}
-	printf("vecX: %f | vecY: %f\n", game->ray.vecdir_x, game->ray.vecdir_y);
 }
 
 void	ray_calculs(t_game *game, int x)
