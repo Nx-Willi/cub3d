@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/12 15:16:04 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/15 12:10:37 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	print_info_struct(t_info info);
 
 //__>RAYCAST____________________________________________________________________
 void	do_raycasting(t_info *infos);
+void	initalize_variables(t_game *game);
 void	get_initial_vector_direction(t_game *game);
 void	ray_calculs(t_game *game, int x);
 void	get_step_for_ray(t_game *game);

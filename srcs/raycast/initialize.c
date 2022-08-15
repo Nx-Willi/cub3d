@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/14 15:12:28 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/15 12:32:02 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ void	get_initial_vector_direction(t_game *game)
 	orientation = game->infos->start_orientation;
 	if (orientation == NO || orientation == SO)
 	{
-		game->ray.vecdir_x = 0;
 		if (orientation == NO)
-			game->ray.vecdir_y = 1;
-		else
 			game->ray.vecdir_y = -1;
+		else
+			game->ray.vecdir_y = 1;
 	}
 	else if (orientation == WE || orientation == EA)
 	{
@@ -35,7 +34,6 @@ void	get_initial_vector_direction(t_game *game)
 			game->ray.vecdir_x = -1;
 		else
 			game->ray.vecdir_x = 1;
-		game->ray.vecdir_y = 0;
 	}
 	printf("vecX: %f | vecY: %f\n", game->ray.vecdir_x, game->ray.vecdir_y);
 }
