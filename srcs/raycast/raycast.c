@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:56:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 15:29:55 by william          ###   ########.fr       */
+/*   Updated: 2022/08/15 15:32:43 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ static void	draw_vertical_line(t_info *infos, int x, t_draw *draw, int color)
 
 static void	prepare_new_img(t_info *infos)
 {
-	void	*tmp;
+	// void	*tmp;
 
-	tmp = infos->mlx.img.img;
-	infos->mlx.img.img = infos->mlx.img.img_tmp;
-	infos->mlx.img.img_tmp = tmp;
-	tmp = infos->mlx.img.addr;
-	infos->mlx.img.addr = infos->mlx.img.addr_tmp;
-	infos->mlx.img.addr_tmp = tmp;
-	// int	y, x;
+	// tmp = infos->mlx.img.img;
+	// infos->mlx.img.img = infos->mlx.img.img_tmp;
+	// infos->mlx.img.img_tmp = tmp;
+	// tmp = infos->mlx.img.addr;
+	// infos->mlx.img.addr = infos->mlx.img.addr_tmp;
+	// infos->mlx.img.addr_tmp = tmp;
+	int	y, x;
 
-	// y = 0;
-	// while (y < infos->mlx.win_heigth)
-	// {
-	// 	x = 0;
-	// 	while (x < infos->mlx.win_width)
-	// 		my_mlx_pixel_put(&infos->mlx, x++, y, 0x00000000);
-	// 	y++;
-	// }
+	y = 0;
+	while (y < infos->mlx.win_heigth)
+	{
+		x = 0;
+		while (x < infos->mlx.win_width)
+			my_mlx_pixel_put(&infos->mlx, x++, y, 0x00000000);
+		y++;
+	}
 }
 
 int	do_raycasting(t_info *infos)
