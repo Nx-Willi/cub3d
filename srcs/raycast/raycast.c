@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:56:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 15:32:43 by william          ###   ########.fr       */
+/*   Updated: 2022/08/16 19:52:50 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,8 @@ static void	draw_vertical_line(t_info *infos, int x, t_draw *draw, int color)
 
 static void	prepare_new_img(t_info *infos)
 {
-	// void	*tmp;
-
-	// tmp = infos->mlx.img.img;
-	// infos->mlx.img.img = infos->mlx.img.img_tmp;
-	// infos->mlx.img.img_tmp = tmp;
-	// tmp = infos->mlx.img.addr;
-	// infos->mlx.img.addr = infos->mlx.img.addr_tmp;
-	// infos->mlx.img.addr_tmp = tmp;
-	int	y, x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < infos->mlx.win_heigth)
@@ -68,6 +61,7 @@ int	do_raycasting(t_info *infos)
 		mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.window,
 			infos->mlx.img.img, 0, 0);
 	}
+	//check_for_moves(infos);
 	prepare_new_img(infos);
 	return (0);
 }

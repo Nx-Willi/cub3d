@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:41:43 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/16 18:11:13 by william          ###   ########.fr       */
+/*   Updated: 2022/08/16 19:52:15 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static int	close_window(t_info *info)
 	return (0);
 }
 
-//TMP, have to be in key_press | release when it'll be faster-------------------
+//TMP, just to show if the code works, it'll be managed by key_press, release,
+//mlx_loop_hook and stuff in movements.c
 void	do_movement(int keycode, t_info *info)
 {
 	t_game	*game;
@@ -91,28 +92,28 @@ void	do_rotation(int keycode, t_info *info)
 	old_plane_x = game->planepos_x;
 	if (keycode == KEY_LEFT)
 	{
-		game->ray.vecdir_x = game->ray.vecdir_x * cos(ROT_SPEED) -
-			game->ray.vecdir_y * sin(ROT_SPEED);
-		game->ray.vecdir_y = old_vecdir_x * sin(ROT_SPEED) +
-			game->ray.vecdir_y + cos(ROT_SPEED);
+		game->ray.vecdir_x = game->ray.vecdir_x * cos(ROTATE) -
+			game->ray.vecdir_y * sin(ROTATE);
+		game->ray.vecdir_y = old_vecdir_x * sin(ROTATE) +
+			game->ray.vecdir_y + cos(ROTATE);
 
-		game->planepos_x = game->planepos_x * cos(ROT_SPEED) -
-			game->planepos_y * sin(ROT_SPEED);
-		game->planepos_y = old_plane_x * sin(ROT_SPEED) +
-			game->planepos_y * cos(ROT_SPEED);
+		game->planepos_x = game->planepos_x * cos(ROTATE) -
+			game->planepos_y * sin(ROTATE);
+		game->planepos_y = old_plane_x * sin(ROTATE) +
+			game->planepos_y * cos(ROTATE);
 		do_raycasting(info);
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		game->ray.vecdir_x = game->ray.vecdir_x * cos(-ROT_SPEED) -
-			game->ray.vecdir_y * sin(-ROT_SPEED);
-		game->ray.vecdir_y = old_vecdir_x * sin(-ROT_SPEED) +
-			game->ray.vecdir_y + cos(-ROT_SPEED);
+		game->ray.vecdir_x = game->ray.vecdir_x * cos(-ROTATE) -
+			game->ray.vecdir_y * sin(-ROTATE);
+		game->ray.vecdir_y = old_vecdir_x * sin(-ROTATE) +
+			game->ray.vecdir_y + cos(-ROTATE);
 
-		game->planepos_x = game->planepos_x * cos(-ROT_SPEED) -
-			game->planepos_y * sin(-ROT_SPEED);
-		game->planepos_y = old_plane_x * sin(-ROT_SPEED) +
-			game->planepos_y * cos(-ROT_SPEED);
+		game->planepos_x = game->planepos_x * cos(-ROTATE) -
+			game->planepos_y * sin(-ROTATE);
+		game->planepos_y = old_plane_x * sin(-ROTATE) +
+			game->planepos_y * cos(-ROTATE);
 		do_raycasting(info);
 	}
 }
@@ -120,15 +121,41 @@ void	do_rotation(int keycode, t_info *info)
 
 // static int	handler_keypress(int keycode, t_info *info)
 // {
-// 	(void)info;
-// 	printf("pressed key: %i\n", keycode);
+// 	t_move	*move;
+
+// 	move = &info->game.move;
+// 	if (keycode == KEY_LEFT)
+// 		move->left = TRUE;
+// 	else if (keycode == KEY_RIGHT)
+// 		move->right = TRUE;
+// 	else if (keycode == KEY_W)
+// 		move->forward = TRUE;
+// 	else if (keycode == KEY_A)
+// 		move->left = TRUE;
+// 	else if (keycode == KEY_S)
+// 		move->backward = TRUE;
+// 	else if (keycode == KEY_D)
+// 		move->right = TRUE;
 // 	return (0);
 // }
 
 // static int	handler_keyrelease(int keycode, t_info *info)
 // {
-// 	(void)info;
-// 	printf("release key: %i\n", keycode);
+// 	t_move	*move;
+
+// 	move = &info->game.move;
+// 	if (keycode == KEY_LEFT)
+// 		move->left = FALSE;
+// 	else if (keycode == KEY_RIGHT)
+// 		move->right = FALSE;
+// 	else if (keycode == KEY_W)
+// 		move->forward = FALSE;
+// 	else if (keycode == KEY_A)
+// 		move->left = FALSE;
+// 	else if (keycode == KEY_S)
+// 		move->backward = FALSE;
+// 	else if (keycode == KEY_D)
+// 		move->right = FALSE;
 // 	return (0);
 // }
 

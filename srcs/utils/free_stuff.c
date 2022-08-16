@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:11:31 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/10 18:02:17 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:54:52 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	free_mlx(t_mlx *mlx)
 	mlx_loop_end(mlx->mlx);
 	mlx_destroy_window(mlx->mlx, mlx->window);
 	mlx_destroy_image(mlx->mlx, mlx->img.img);
+	mlx_destroy_image(mlx->mlx, mlx->img.img_tmp);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 }
