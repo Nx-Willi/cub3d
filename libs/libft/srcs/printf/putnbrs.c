@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   putnbrs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 22:35:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/05/05 23:01:44 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:28:31 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 
 int	_putnbr(int nb, int count)
 {

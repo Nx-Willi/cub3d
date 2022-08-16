@@ -3,24 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:33:55 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/06 18:02:58 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:29:04 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
-
 # include "printf.h"
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE	10
+# endif
+# define FALSE			0
+# define TRUE			1
 
 typedef struct s_list
 {
@@ -28,8 +30,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-//----- Strings Stock -----
-
+//__>STR________________________________________________________________________
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -58,9 +59,9 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 void		ft_putchar(char c);
 void		ft_putstr(const char *str);
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-//----- Memory Stock -----
-
+//__>MEM________________________________________________________________________
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 
 void		ft_bzero(void *s, size_t n);
@@ -69,9 +70,9 @@ void		*ft_memcpy(void *dst, const void *src, size_t size);
 void		*ft_memmove(void *dst, const void *src, size_t size);
 void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-//----- File Stock -----
-
+//__>FILE_______________________________________________________________________
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
@@ -80,9 +81,9 @@ void		ft_putnbr_fd(int n, int fd);
 int			is_ext_correct(const char *file, const char *ext);
 
 char		*get_next_line(int fd);
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-//----- List Stock -----
-
+//__>LST________________________________________________________________________
 int			ft_lstsize(t_list *lst);
 
 void		ft_lstadd_back(t_list **alst, t_list *new);
@@ -94,9 +95,9 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(void *content);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
-//----- Int Stock -----
-
+//__>INT________________________________________________________________________
 int			ft_atoi_base(const char *str, const char *base);
 int			ft_atoi(const char *str);
 
@@ -105,5 +106,6 @@ char		*ft_itoa(int n);
 
 void		ft_putnbr(int nbr);
 long int	ft_atoli(const char *str);
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 #endif
