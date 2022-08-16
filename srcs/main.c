@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 15:12:09 by william          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:11:58 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	init_mlx(t_info *infos)
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
 	mlx->img.img_tmp = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
-	mlx->img.addr_tmp = mlx_get_data_addr(mlx->img.img_tmp, 
+	mlx->img.addr_tmp = mlx_get_data_addr(mlx->img.img_tmp,
 			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
 }
 

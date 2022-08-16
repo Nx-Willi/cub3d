@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 13:28:44 by william          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:07:54 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include <X11/Xlib.h>
 
 # define TAB_NULL	3
+# define SPEED		0.3
+# define ROT_SPEED	0.03
 
 //__>ENUMS______________________________________________________________________
 enum	e_keys
@@ -49,11 +51,11 @@ enum	e_textures
 
 enum	e_map
 {
-	NO		= 100,
+	NO	= 100,
 	SO,
 	WE,
 	EA,
-	OUT		= -1,
+	OUT	= -1,
 	IN,
 	WALL
 };
