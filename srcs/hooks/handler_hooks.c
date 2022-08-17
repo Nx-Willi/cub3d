@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:41:43 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/16 19:52:15 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 20:03:14 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	do_movement(int keycode, t_info *info)
 		if (info->i_map[(int)(game->ray.init_pos_y +
 			game->ray.vecdir_y * SPEED)][(int)game->ray.init_pos_x] == 0)
 			game->ray.init_pos_y += game->ray.vecdir_y * SPEED;
-		do_raycasting(info);
+		do_raycasting(game);
 	}
 	else if (keycode == KEY_S)
 	{
@@ -55,7 +55,7 @@ void	do_movement(int keycode, t_info *info)
 		if (info->i_map[(int)(game->ray.init_pos_y -
 			game->ray.vecdir_y * SPEED)][(int)game->ray.init_pos_x] == 0)
 			game->ray.init_pos_y -= game->ray.vecdir_y * SPEED;
-		do_raycasting(info);
+		do_raycasting(game);
 	}
 	else if (keycode == KEY_A)
 	{
@@ -65,7 +65,7 @@ void	do_movement(int keycode, t_info *info)
 		if (info->i_map[(int)(game->ray.init_pos_y + game->ray.vecdir_x *
 			SPEED)][(int)game->ray.init_pos_x] == 0)
 			game->ray.init_pos_y -= game->ray.vecdir_x * SPEED;
-		do_raycasting(info);
+		do_raycasting(game);
 	}
 	else if (keycode == KEY_D)
 	{
@@ -75,7 +75,7 @@ void	do_movement(int keycode, t_info *info)
 		if (info->i_map[(int)(game->ray.init_pos_y + game->ray.vecdir_x *
 			SPEED)][(int)game->ray.init_pos_x] == 0)
 			game->ray.init_pos_y += game->ray.vecdir_x * SPEED;
-		do_raycasting(info);
+		do_raycasting(game);
 	}
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		do_rotation(keycode, info);
@@ -101,7 +101,7 @@ void	do_rotation(int keycode, t_info *info)
 			game->planepos_y * sin(ROTATE);
 		game->planepos_y = old_plane_x * sin(ROTATE) +
 			game->planepos_y * cos(ROTATE);
-		do_raycasting(info);
+		do_raycasting(game);
 	}
 	else if (keycode == KEY_RIGHT)
 	{
@@ -114,7 +114,7 @@ void	do_rotation(int keycode, t_info *info)
 			game->planepos_y * sin(-ROTATE);
 		game->planepos_y = old_plane_x * sin(-ROTATE) +
 			game->planepos_y * cos(-ROTATE);
-		do_raycasting(info);
+		do_raycasting(game);
 	}
 }
 //------------------------------------------------------------------------------
