@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: william <william@student.42.fr>            +#+  +:+       +#+         #
+#    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/16 19:46:57 by william          ###   ########.fr        #
+#    Updated: 2022/08/17 14:48:07 by xle-baux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PATHLIBFT	= ${PATHLIBS}libft/
 PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
-SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c init_main.c) \
+SRCS		= $(addprefix ${PATHSRCS}, main.c init_main.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c is_info.c \
 								get_infos.c get_map.c check_map.c \
 								parser_tools_1.c parser_tools_2.c \
