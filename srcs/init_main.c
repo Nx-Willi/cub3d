@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:42:45 by william           #+#    #+#             */
-/*   Updated: 2022/08/17 16:23:14 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 19:30:01 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ void	init_mlx(t_info *infos)
 	mlx_get_screen_size(mlx->mlx, &mlx->win_width, &mlx->win_heigth);
 	// mlx->win_width -= 800;
 	// mlx->win_heigth -= 500;
-	mlx->win_width = 640;
-	mlx->win_heigth = 360;
+	// mlx->win_width = 640;
+	// mlx->win_heigth = 360;
+	mlx->win_width = 1920;
+	mlx->win_heigth = 1080;
 	mlx->window = mlx_new_window(mlx->mlx, mlx->win_width, mlx->win_heigth,
 			"cub3D");
 	mlx->img.img = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);

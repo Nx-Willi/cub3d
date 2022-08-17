@@ -6,7 +6,7 @@
 #    By: william <william@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/16 19:46:57 by william          ###   ########.fr        #
+#    Updated: 2022/08/17 16:42:57 by william          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c init_main.c) \
 								ft_split_piscine.c my_mlx_pixel_put.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
 			$(addprefix ${PATHSRCS}raycast/, raycast.c initialize.c \
-								movements.c)
+								movements.c draw_map.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}

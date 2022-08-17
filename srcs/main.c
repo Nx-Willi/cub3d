@@ -6,11 +6,23 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/16 19:43:05 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 19:28:27 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	tmp(t_info *infos)
+{
+	int	i;
+//
+	i = -1;
+	while (++i < 4)
+	{
+		ft_strlcpy(infos->textures[i], infos->textures[i],
+			ft_strlen(infos->textures[i]));
+	}
+}
 
 int	main(int args, char **argv)
 {
@@ -26,8 +38,9 @@ int	main(int args, char **argv)
 	print_info_struct(info);
 	info.game.infos = &info;
 	init_ray_variables(&info.game);
+	tmp(&info);
 	init_mlx(&info);
-	do_raycasting(&info);
+	do_raycasting(&info.game);
 	handler_events(&info);
 	mlx_loop(info.mlx.mlx);
 	return (0);

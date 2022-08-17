@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 13:31:48 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 18:04:21 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,18 @@ void	get_next_hitten_wall(t_game *game)
 
 void	get_wall_and_draw_distance(t_game *game)
 {
-	int	line_height;
-
 	if (game->ray.side == FALSE)
 		game->ray.walldist = game->ray.sidedist_x - game->ray.deltadist_x;
 	else
 		game->ray.walldist = game->ray.sidedist_y - game->ray.deltadist_y;
-	line_height = (int)(game->infos->mlx.win_heigth / game->ray.walldist);
-	game->draw.startdraw = -line_height / 2 + game->infos->mlx.win_heigth / 2;
+	game->ray.line_height = (int)(game->infos->mlx.win_heigth
+			/ game->ray.walldist);
+	game->draw.startdraw = -game->ray.line_height / 2
+		+ game->infos->mlx.win_heigth / 2;
 	if (game->draw.startdraw < 0)
 		game->draw.startdraw = 0;
-	game->draw.enddraw = line_height / 2 + game->infos->mlx.win_heigth / 2;
+	game->draw.enddraw = game->ray.line_height / 2
+		+ game->infos->mlx.win_heigth / 2;
 	if (game->draw.enddraw >= game->infos->mlx.win_heigth)
 		game->draw.enddraw = game->infos->mlx.win_heigth - 1;
 }

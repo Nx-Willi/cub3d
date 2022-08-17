@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/16 19:46:12 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 19:26:02 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,14 @@ void	print_info_struct(t_info info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>RAYCAST____________________________________________________________________
-int		do_raycasting(t_info *infos);
+int		do_raycasting(t_game *game);
 
 void	get_initial_vector_direction(t_game *game);
 void	ray_calculs(t_game *game, int x);
 void	get_step_for_ray(t_game *game);
 void	get_next_hitten_wall(t_game *game);
 void	get_wall_and_draw_distance(t_game *game);
+void	draw_wall_line(t_info *infos, int x);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 void	minimap(t_info *infos);
 

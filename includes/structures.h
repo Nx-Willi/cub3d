@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/17 16:08:24 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 17:08:25 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_mlx		t_mlx;
 typedef struct s_ray		t_ray;
 typedef struct s_draw		t_draw;
 typedef struct s_move		t_move;
+typedef struct s_texture	t_texture;
 typedef struct s_game		t_game;
 //__>TYPE_PARSING_______________________________________________________________
 typedef struct s_check_info	t_check_info;
@@ -59,6 +60,7 @@ struct	s_ray
 	int		side;
 	int		pos_x;
 	int		pos_y;
+	int		line_height;
 	double	init_pos_x;
 	double	init_pos_y;
 	double	sidedist_x;
@@ -88,16 +90,27 @@ struct	s_move
 	int	right;
 };
 
+struct	s_texture
+{
+	int		texture;
+	int		tex_x;
+	int		tex_y;
+	double	wall_x;
+	double	step;
+	double	tex_pos;
+};
+
 struct	s_game
 {
-	double	cam_x;
-	double	planepos_x;
-	double	planepos_y;
-	t_ray	ray;
-	t_draw	draw;
-	t_move	move;
-	t_data	textures[4];
-	t_info	*infos;
+	double		cam_x;
+	double		planepos_x;
+	double		planepos_y;
+	t_ray		ray;
+	t_draw		draw;
+	t_move		move;
+	t_data		textures[4];
+	t_texture	draw_text;
+	t_info		*infos;
 };
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
