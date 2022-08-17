@@ -6,17 +6,59 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:42:45 by william           #+#    #+#             */
-/*   Updated: 2022/08/16 19:53:08 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 16:23:14 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	init_textures_addr(t_info *infos)
+{
+	int		i;
+	t_game	*game;
+
+	game = &infos->game;
+	i = -1;
+	while (++i < 4)
+		game->textures[i].addr = mlx_get_data_addr(game->textures[i].img,
+				&game->textures[i].bits_per_pixel,
+				&game->textures[i].line_length,
+				&game->textures[i].endian);
+}
+
+static void	init_textures(t_info *infos)
+{
+	int		i;
+	t_game	*game;
+
+	game = &infos->game;
+	i = -1;
+	while (++i < 4)
+		game->textures[i].img = NULL;
+	i = -1;
+	while (++i < 4)
+	{
+		game->textures[i].img = mlx_xpm_file_to_image(infos->mlx.mlx,
+				infos->textures[i], &(game->textures[i].width),
+				&(game->textures[i].height));
+		if (game->textures[i].img == NULL)
+		{
+			ft_putstr_fd("/!\\ Texture: ", 2);
+			ft_putstr_fd(infos->textures[i], 2);
+			ft_putstr_fd(" /!\\\n", 2);
+			exit_program(infos, "A probem appeared while loading this \
+texture.\n", EXIT_FAILURE);
+		}
+	}
+	init_textures_addr(infos);
+}
 
 void	init_mlx(t_info *infos)
 {
 	t_mlx	*mlx;
 
 	mlx = &infos->mlx;
+	mlx->infos = infos;
 	mlx->mlx = mlx_init();
 	if (mlx->mlx == NULL)
 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
@@ -30,9 +72,7 @@ void	init_mlx(t_info *infos)
 	mlx->img.img = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
-	mlx->img.img_tmp = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
-	mlx->img.addr_tmp = mlx_get_data_addr(mlx->img.img_tmp,
-			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
+	init_textures(infos);
 }
 
 void	init_moves_variables(t_move *move)

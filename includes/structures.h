@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/16 18:28:24 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 16:08:24 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ typedef struct s_info		t_info;
 struct	s_data
 {
 	void	*img;
-	void	*img_tmp;
 	char	*addr;
-	char	*addr_tmp;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		height;
 };
 
 struct	s_mlx
@@ -47,6 +47,7 @@ struct	s_mlx
 	int		win_width;
 	int		win_heigth;
 	t_data	img;
+	t_info	*infos;
 };
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
@@ -95,6 +96,7 @@ struct	s_game
 	t_ray	ray;
 	t_draw	draw;
 	t_move	move;
+	t_data	textures[4];
 	t_info	*infos;
 };
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
