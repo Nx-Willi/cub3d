@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:13:07 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/05/05 23:01:25 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:19:09 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define FALSE		0
-# define TRUE		1
 # define HEXA		"0123456789abcdef"
 # define HEXA_CAPS	"0123456789ABCDEF"
 

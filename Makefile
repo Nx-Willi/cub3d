@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
+#    By: william <william@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/14 15:41:16 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/16 19:46:57 by william          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PATHLIBFT	= ${PATHLIBS}libft/
 PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
-SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c) \
+SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c init_main.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c is_info.c \
 								get_infos.c get_map.c check_map.c \
 								parser_tools_1.c parser_tools_2.c \
@@ -43,16 +43,16 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
 								ft_split_piscine.c my_mlx_pixel_put.c) \
 			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
-			$(addprefix ${PATHSRCS}raycast/, raycast.c initialize.c)
-			# $(addprefix ${PATHSRCS}raycast/, raycastlodev.c)
-
+			$(addprefix ${PATHSRCS}raycast/, raycast.c initialize.c \
+								movements.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}
 
 CC			= clang
 CFLAGS		= -Wall -Wextra -Werror -g3
-INCS		= -I${PATHHEADERS} -I${PATHLIBFT}${PATHHEADERS} -I${PATHLIBS}minilibx
+INCS		= -I${PATHHEADERS} -I${PATHLIBFT}${PATHHEADERS} \
+			-I${PATHLIBS}minilibx
 
 RM			= rm -rf
 MAKE		= make -C

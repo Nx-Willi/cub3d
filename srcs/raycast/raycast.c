@@ -6,30 +6,11 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:56:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 12:32:25 by william          ###   ########.fr       */
+/*   Updated: 2022/08/16 19:52:50 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	initalize_variables(t_game *game)
-{
-	game->ray.init_pos_x = game->infos->start_x + 0.5;
-	game->ray.init_pos_y = game->infos->start_y + 0.5;
-	game->ray.vecdir_x = 0;
-	game->ray.vecdir_y = 0;
-	game->planepos_x = 0;
-	game->planepos_y = 0;
-	if (game->infos->start_orientation == NO)
-		game->planepos_x = 0.66;
-	else if (game->infos->start_orientation == SO)
-		game->planepos_x = -0.66;
-	else if (game->infos->start_orientation == EA)
-		game->planepos_y = 0.66;
-	else if (game->infos->start_orientation == WE)
-		game->planepos_y = -0.66;
-	get_initial_vector_direction(game);
-}
 
 static void	draw_vertical_line(t_info *infos, int x, t_draw *draw, int color)
 {
@@ -43,7 +24,22 @@ static void	draw_vertical_line(t_info *infos, int x, t_draw *draw, int color)
 	}
 }
 
-void	do_raycasting(t_info *infos)
+static void	prepare_new_img(t_info *infos)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < infos->mlx.win_heigth)
+	{
+		x = 0;
+		while (x < infos->mlx.win_width)
+			my_mlx_pixel_put(&infos->mlx, x++, y, 0x00000000);
+		y++;
+	}
+}
+
+int	do_raycasting(t_info *infos)
 {
 	int		color;
 	int		x;
@@ -65,4 +61,7 @@ void	do_raycasting(t_info *infos)
 		mlx_put_image_to_window(infos->mlx.mlx, infos->mlx.window,
 			infos->mlx.img.img, 0, 0);
 	}
+	//check_for_moves(infos);
+	prepare_new_img(infos);
+	return (0);
 }

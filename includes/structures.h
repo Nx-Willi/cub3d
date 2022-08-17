@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/14 16:17:41 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:42:43 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_mlx		t_mlx;
 //__>TYPE_FOR_GAME______________________________________________________________
 typedef struct s_ray		t_ray;
 typedef struct s_draw		t_draw;
+typedef struct s_move		t_move;
 typedef struct s_game		t_game;
 //__>TYPE_PARSING_______________________________________________________________
 typedef struct s_check_info	t_check_info;
@@ -31,7 +32,9 @@ typedef struct s_info		t_info;
 struct	s_data
 {
 	void	*img;
+	void	*img_tmp;
 	char	*addr;
+	char	*addr_tmp;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -70,18 +73,29 @@ struct	s_ray
 
 struct	s_draw
 {
-	int		startdraw;
-	int		enddraw;
+	int	startdraw;
+	int	enddraw;
+};
+
+struct	s_move
+{
+	int	rot_right;
+	int	rot_left;
+	int	forward;
+	int	backward;
+	int	left;
+	int	right;
 };
 
 struct	s_game
 {
-	double		cam_x;
-	double		planepos_x;
-	double		planepos_y;
-	t_ray		ray;
-	t_draw		draw;
-	t_info		*infos;
+	double	cam_x;
+	double	planepos_x;
+	double	planepos_y;
+	t_ray	ray;
+	t_draw	draw;
+	t_move	move;
+	t_info	*infos;
 };
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
@@ -109,17 +123,15 @@ struct	s_check_info
 
 struct	s_info
 {
-	int			**i_map;
-	int			start_x;
-	int			start_y;
-	int			start_orientation;
-	int			len_x;
-	int			len_y;
-	char		*textures[4];
-	t_color		floor_color;
-	t_color		ceilling_color;
-	t_mlx		mlx;
-	t_game		game;
+	int		**i_map;
+	int		start_x;
+	int		start_y;
+	int		start_orientation;
+	char	*textures[4];
+	t_color	floor_color;
+	t_color	ceilling_color;
+	t_mlx	mlx;
+	t_game	game;
 };
 
 #endif

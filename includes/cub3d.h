@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 12:10:37 by william          ###   ########.fr       */
+/*   Updated: 2022/08/16 19:46:12 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include <X11/Xlib.h>
 
 # define TAB_NULL	3
+# define SPEED		0.3
+# define ROTATE		0.003
 
 //__>ENUMS______________________________________________________________________
 enum	e_keys
@@ -49,14 +51,20 @@ enum	e_textures
 
 enum	e_map
 {
-	NO		= 100,
+	NO	= 100,
 	SO,
 	WE,
 	EA,
-	OUT		= -1,
+	OUT	= -1,
 	IN,
 	WALL
 };
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+//__>INITMAIN___________________________________________________________________
+void	init_mlx(t_info *infos);
+void	init_moves_variables(t_move *move);
+void	init_ray_variables(t_game *game);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>PARSING____________________________________________________________________
@@ -83,8 +91,8 @@ void	print_info_struct(t_info info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>RAYCAST____________________________________________________________________
-void	do_raycasting(t_info *infos);
-void	initalize_variables(t_game *game);
+int		do_raycasting(t_info *infos);
+
 void	get_initial_vector_direction(t_game *game);
 void	ray_calculs(t_game *game, int x);
 void	get_step_for_ray(t_game *game);
