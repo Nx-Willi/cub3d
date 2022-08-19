@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:56:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/17 19:25:05 by william          ###   ########.fr       */
+/*   Updated: 2022/08/19 21:11:14 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	do_raycasting(t_game *game)
 	}
 	mlx_put_image_to_window(game->infos->mlx.mlx, game->infos->mlx.window,
 		game->infos->mlx.img.img, 0, 0);
-	// check_for_moves(infos);
+	check_for_moves(game->infos);
 	// prepare_new_img(infos);
 	return (0);
 }

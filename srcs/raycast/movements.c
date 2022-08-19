@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 18:20:03 by william           #+#    #+#             */
-/*   Updated: 2022/08/16 19:49:44 by william          ###   ########.fr       */
+/*   Updated: 2022/08/19 21:22:59 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	do_rotation(t_game *game)
 
 	old_vecdir_x = game->ray.vecdir_x;
 	old_plane_x = game->planepos_x;
-	if (game->move.left == TRUE)
+	if (game->move.rot_left == TRUE)
 	{
 		game->ray.vecdir_x = game->ray.vecdir_x * cos(ROTATE)
 			- game->ray.vecdir_y * sin(ROTATE);
@@ -47,7 +47,7 @@ static void	do_rotation(t_game *game)
 		game->planepos_y = old_plane_x * sin(ROTATE)
 			+ game->planepos_y * cos(ROTATE);
 	}
-	if (game->move.right == TRUE)
+	if (game->move.rot_right == TRUE)
 		rotate_right(game);
 }
 
@@ -58,21 +58,21 @@ static void	do_line_movement(t_game *game)
 	info = game->infos;
 	if (game->move.forward == TRUE)
 	{
-		if (info->i_map[(int)game->ray.init_pos_y]
-			[(int)(game->ray.init_pos_x + game->ray.vecdir_x * SPEED)] == 0)
-			game->ray.init_pos_x += game->ray.vecdir_x * SPEED;
-		if (info->i_map[(int)(game->ray.init_pos_y
-				+ game->ray.vecdir_y * SPEED)][(int)game->ray.init_pos_x] == 0)
-			game->ray.init_pos_y += game->ray.vecdir_y * SPEED;
+		if (info->i_map[(int)game->ray.map_y]
+			[(int)(game->ray.map_x + game->ray.vecdir_x * SPEED)] == 0)
+			game->ray.map_x += game->ray.vecdir_x * SPEED;
+		if (info->i_map[(int)(game->ray.map_y
+				+ game->ray.vecdir_y * SPEED)][(int)game->ray.map_x] == 0)
+			game->ray.map_y += game->ray.vecdir_y * SPEED;
 	}
 	if (game->move.backward == TRUE)
 	{
-		if (info->i_map[(int)game->ray.init_pos_y]
-			[(int)(game->ray.init_pos_x - game->ray.vecdir_x * SPEED)] == 0)
-			game->ray.init_pos_x -= game->ray.vecdir_x * SPEED;
-		if (info->i_map[(int)(game->ray.init_pos_y
-				- game->ray.vecdir_y * SPEED)][(int)game->ray.init_pos_x] == 0)
-			game->ray.init_pos_y -= game->ray.vecdir_y * SPEED;
+		if (info->i_map[(int)game->ray.map_y]
+			[(int)(game->ray.map_x - game->ray.vecdir_x * SPEED)] == 0)
+			game->ray.map_x -= game->ray.vecdir_x * SPEED;
+		if (info->i_map[(int)(game->ray.map_y
+				- game->ray.vecdir_y * SPEED)][(int)game->ray.map_x] == 0)
+			game->ray.map_y -= game->ray.vecdir_y * SPEED;
 	}
 }
 
@@ -83,21 +83,21 @@ static void	do_side_movement(t_game *game)
 	info = game->infos;
 	if (game->move.left == TRUE)
 	{
-		if (info->i_map[(int)game->ray.init_pos_y][(int)(game->ray.init_pos_x
+		if (info->i_map[(int)game->ray.map_y][(int)(game->ray.map_x
 			- game->ray.vecdir_y * SPEED)] == 0)
-			game->ray.init_pos_x += game->ray.vecdir_y * SPEED;
-		if (info->i_map[(int)(game->ray.init_pos_y + game->ray.vecdir_x
-				* SPEED)][(int)game->ray.init_pos_x] == 0)
-			game->ray.init_pos_y -= game->ray.vecdir_x * SPEED;
+			game->ray.map_x += game->ray.vecdir_y * SPEED;
+		if (info->i_map[(int)(game->ray.map_y + game->ray.vecdir_x
+				* SPEED)][(int)game->ray.map_x] == 0)
+			game->ray.map_y -= game->ray.vecdir_x * SPEED;
 	}
 	if (game->move.right == TRUE)
 	{
-		if (info->i_map[(int)game->ray.init_pos_y][(int)(game->ray.init_pos_x
+		if (info->i_map[(int)game->ray.map_y][(int)(game->ray.map_x
 			- game->ray.vecdir_y * SPEED)] == 0)
-			game->ray.init_pos_x -= game->ray.vecdir_y * SPEED;
-		if (info->i_map[(int)(game->ray.init_pos_y + game->ray.vecdir_x
-				* SPEED)][(int)game->ray.init_pos_x] == 0)
-			game->ray.init_pos_y += game->ray.vecdir_x * SPEED;
+			game->ray.map_x -= game->ray.vecdir_y * SPEED;
+		if (info->i_map[(int)(game->ray.map_y + game->ray.vecdir_x
+				* SPEED)][(int)game->ray.map_x] == 0)
+			game->ray.map_y += game->ray.vecdir_x * SPEED;
 	}
 }
 

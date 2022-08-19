@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:42:45 by william           #+#    #+#             */
-/*   Updated: 2022/08/17 19:30:01 by william          ###   ########.fr       */
+/*   Updated: 2022/08/19 20:56:21 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	init_moves_variables(t_move *move)
 
 void	init_ray_variables(t_game *game)
 {
-	game->ray.init_pos_x = game->infos->start_x + 0.5;
-	game->ray.init_pos_y = game->infos->start_y + 0.5;
+	game->ray.map_x = game->infos->start_x + 0.5;
+	game->ray.map_y = game->infos->start_y + 0.5;
 	game->ray.vecdir_x = 0;
 	game->ray.vecdir_y = 0;
 	game->planepos_x = 0;

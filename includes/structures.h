@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/17 17:08:25 by william          ###   ########.fr       */
+/*   Updated: 2022/08/19 20:56:21 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ struct	s_ray
 	int		pos_x;
 	int		pos_y;
 	int		line_height;
-	double	init_pos_x;
-	double	init_pos_y;
+	double	map_x;
+	double	map_y;
 	double	sidedist_x;
 	double	sidedist_y;
 	double	vecdir_x;
