@@ -6,7 +6,7 @@
 #    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/17 14:48:07 by xle-baux         ###   ########.fr        #
+#    Updated: 2022/08/19 22:27:19 by xle-baux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,16 +35,17 @@ PATHLIBFT	= ${PATHLIBS}libft/
 PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
-SRCS		= $(addprefix ${PATHSRCS}, main.c init_main.c) \
+SRCS		= $(addprefix ${PATHSRCS}, main.c minimap.c init_main.c \
+								handler_hooks.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c is_info.c \
 								get_infos.c get_map.c check_map.c \
 								parser_tools_1.c parser_tools_2.c \
 								tab_char_to_int.c tmp_parser_tools.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
 								ft_split_piscine.c my_mlx_pixel_put.c) \
-			$(addprefix ${PATHSRCS}hooks/, handler_hooks.c) \
+			$(addprefix ${PATHSRCS}hooks/, ) \
 			$(addprefix ${PATHSRCS}raycast/, raycast.c initialize.c \
-								movements.c)
+								movements.c draw_map.c)
 
 OBJS		= ${SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}

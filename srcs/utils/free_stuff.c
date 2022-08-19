@@ -6,7 +6,7 @@
 /*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:11:31 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/16 19:54:52 by william          ###   ########.fr       */
+/*   Updated: 2022/08/17 16:25:56 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	free_info_struct(t_info *info)
 {
 	int	i;
 
-	i = 0;
-	free(info->textures[T_NO]);
-	free(info->textures[T_SO]);
-	free(info->textures[T_WE]);
-	free(info->textures[T_EA]);
+	i = -1;
+	while (++i < 4)
+		free(info->textures[i]);
 }
 
 void	free_char_char(char **str)
@@ -38,10 +36,15 @@ void	free_char_char(char **str)
 
 void	free_mlx(t_mlx *mlx)
 {
+	int	i;
+
 	mlx_loop_end(mlx->mlx);
 	mlx_destroy_window(mlx->mlx, mlx->window);
 	mlx_destroy_image(mlx->mlx, mlx->img.img);
-	mlx_destroy_image(mlx->mlx, mlx->img.img_tmp);
+	i = -1;
+	while (++i < 4)
+		if (mlx->infos->game.textures[i].img != NULL)
+			mlx_destroy_image(mlx->mlx, mlx->infos->game.textures[i].img);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 }

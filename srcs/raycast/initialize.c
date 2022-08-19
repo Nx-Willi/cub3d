@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/15 13:31:48 by william          ###   ########.fr       */
+/*   Updated: 2022/08/19 22:17:42 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	ray_calculs(t_game *game, int x)
 		* game->cam_x;
 	game->ray.raydir_y = game->ray.vecdir_y + game->planepos_y
 		* game->cam_x;
-	game->ray.pos_x = (int)game->ray.init_pos_x;
-	game->ray.pos_y = (int)game->ray.init_pos_y;
+	game->ray.pos_x = (int)game->ray.map_x;
+	game->ray.pos_y = (int)game->ray.map_y;
 	game->ray.deltadist_x = sqrt(1 + (game->ray.raydir_y * game->ray.raydir_y)
 			/ (game->ray.raydir_x * game->ray.raydir_x));
 	game->ray.deltadist_y = sqrt(1 + (game->ray.raydir_x * game->ray.raydir_x)
@@ -57,25 +57,25 @@ void	get_step_for_ray(t_game *game)
 	if (game->ray.raydir_x < 0)
 	{
 		game->ray.step_x = -1;
-		game->ray.sidedist_x = (game->ray.init_pos_x - game->ray.pos_x)
+		game->ray.sidedist_x = (game->ray.map_x - game->ray.pos_x)
 			* game->ray.deltadist_x;
 	}
 	else
 	{
 		game->ray.step_x = 1;
-		game->ray.sidedist_x = (game->ray.pos_x + 1.0 - game->ray.init_pos_x)
+		game->ray.sidedist_x = (game->ray.pos_x + 1.0 - game->ray.map_x)
 			* game->ray.deltadist_x;
 	}
 	if (game->ray.raydir_y < 0)
 	{
 		game->ray.step_y = -1;
-		game->ray.sidedist_y = (game->ray.init_pos_y - game->ray.pos_y)
+		game->ray.sidedist_y = (game->ray.map_y - game->ray.pos_y)
 			* game->ray.deltadist_y;
 	}
 	else
 	{
 		game->ray.step_y = 1;
-		game->ray.sidedist_y = (game->ray.pos_y + 1.0 - game->ray.init_pos_y)
+		game->ray.sidedist_y = (game->ray.pos_y + 1.0 - game->ray.map_y)
 			* game->ray.deltadist_y;
 	}
 }
@@ -99,25 +99,25 @@ void	get_next_hitten_wall(t_game *game)
 			game->ray.pos_y += game->ray.step_y;
 			game->ray.side = TRUE;
 		}
-		if (game->infos->i_map[game->ray.pos_y][game->ray.pos_x] > 0
-			|| game->infos->i_map[game->ray.pos_y][game->ray.pos_x] == -1)
+		if (game->infos->i_map[game->ray.pos_y][game->ray.pos_x] > 0)
 			hit = TRUE;
 	}
 }
 
 void	get_wall_and_draw_distance(t_game *game)
 {
-	int	line_height;
-
 	if (game->ray.side == FALSE)
 		game->ray.walldist = game->ray.sidedist_x - game->ray.deltadist_x;
 	else
 		game->ray.walldist = game->ray.sidedist_y - game->ray.deltadist_y;
-	line_height = (int)(game->infos->mlx.win_heigth / game->ray.walldist);
-	game->draw.startdraw = -line_height / 2 + game->infos->mlx.win_heigth / 2;
+	game->ray.line_height = (int)(game->infos->mlx.win_heigth
+			/ game->ray.walldist);
+	game->draw.startdraw = -game->ray.line_height / 2
+		+ game->infos->mlx.win_heigth / 2;
 	if (game->draw.startdraw < 0)
 		game->draw.startdraw = 0;
-	game->draw.enddraw = line_height / 2 + game->infos->mlx.win_heigth / 2;
+	game->draw.enddraw = game->ray.line_height / 2
+		+ game->infos->mlx.win_heigth / 2;
 	if (game->draw.enddraw >= game->infos->mlx.win_heigth)
 		game->draw.enddraw = game->infos->mlx.win_heigth - 1;
 }

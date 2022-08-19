@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
 /*   Updated: 2022/08/17 14:48:15 by xle-baux         ###   ########.fr       */
+=======
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
+/*   Updated: 2022/08/19 21:38:43 by wdebotte         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +34,7 @@
 
 # define TAB_NULL	3
 # define SPEED		0.3
-# define ROTATE		0.003
+# define ROTATE		0.03
 
 //__>ENUMS______________________________________________________________________
 enum	e_keys
@@ -91,13 +98,15 @@ void	print_info_struct(t_info info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>RAYCAST____________________________________________________________________
-int		do_raycasting(t_info *infos);
+int		do_raycasting(t_game *game);
 
 void	get_initial_vector_direction(t_game *game);
 void	ray_calculs(t_game *game, int x);
 void	get_step_for_ray(t_game *game);
 void	get_next_hitten_wall(t_game *game);
 void	get_wall_and_draw_distance(t_game *game);
+void	draw_wall_line(t_info *infos, int x);
+void	check_for_moves(t_info *info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>HOOKS______________________________________________________________________
