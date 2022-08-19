@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/08/19 22:16:30 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/20 00:31:02 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,32 @@ static void	put_texture(t_info *infos, t_game *game, int x, int y)
 		= game->textures[texture].addr[game->draw_text.tex_y
 		* game->textures[texture].line_length + game->draw_text.tex_x
 		* (game->textures[texture].bits_per_pixel / 8) + 2];
+}
+
+static void	draw_ceilling_and_floor(t_info *infos, t_draw *draw, int x)
+{
+	int	y;
+
+	y = -1;
+	while (++y < draw->startdraw)
+	{
+		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
+			* infos->mlx.img.bits_per_pixel / 8 + 2] = infos->ceilling_color.r;
+		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
+			* infos->mlx.img.bits_per_pixel / 8 + 1] = infos->ceilling_color.g;
+		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
+			* infos->mlx.img.bits_per_pixel / 8] = infos->ceilling_color.b;
+	}
+	y = draw->enddraw - 1;
+	while (++y < infos->mlx.win_heigth)
+	{
+		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
+			* infos->mlx.img.bits_per_pixel / 8 + 2] = infos->floor_color.r;
+		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
+			* infos->mlx.img.bits_per_pixel / 8 + 1] = infos->floor_color.g;
+		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
+			* infos->mlx.img.bits_per_pixel / 8] = infos->floor_color.b;
+	}
 }
 
 void	draw_wall_line(t_info *infos, int x)

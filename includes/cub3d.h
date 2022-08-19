@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/19 21:38:43 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/20 00:31:32 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	get_wall_and_draw_distance(t_game *game);
 void	draw_wall_line(t_info *infos, int x);
 void	check_for_moves(t_info *info);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-void	minimap(t_info *infos);
 
 //__>HOOKS______________________________________________________________________
 void	handler_events(t_info *info);
@@ -114,6 +113,7 @@ char	**ft_split_piscine(char *str, char *charset);
 
 void	exit_program(t_info *info, char *error, int status);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+
 //____>FREES____________________________________________________________________
 void	free_mlx(t_mlx *mlx);
 void	free_char_char(char **str);
