@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 18:20:03 by william           #+#    #+#             */
-/*   Updated: 2022/08/19 21:22:59 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/19 22:39:16 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static void	rotate_right(t_game *game)
 
 	old_vecdir_x = game->ray.vecdir_x;
 	old_plane_x = game->planepos_x;
-	game->ray.vecdir_x = game->ray.vecdir_x * cos(-ROTATE) - game->ray.vecdir_y
-		* sin(-ROTATE);
-	game->ray.vecdir_y = old_vecdir_x * sin(-ROTATE) + game->ray.vecdir_y
-		* cos(-ROTATE);
-	game->planepos_x = game->planepos_x * cos(-ROTATE) - game->planepos_y
-		* sin(-ROTATE);
-	game->planepos_y = old_plane_x * sin(-ROTATE) + game->planepos_y
-		* cos(-ROTATE);
+	game->ray.vecdir_x = game->ray.vecdir_x * cos(ROTATE) - game->ray.vecdir_y
+		* sin(ROTATE);
+	game->ray.vecdir_y = old_vecdir_x * sin(ROTATE) + game->ray.vecdir_y
+		* cos(ROTATE);
+	game->planepos_x = game->planepos_x * cos(ROTATE) - game->planepos_y
+		* sin(ROTATE);
+	game->planepos_y = old_plane_x * sin(ROTATE) + game->planepos_y
+		* cos(ROTATE);
 }
 
 static void	do_rotation(t_game *game)
@@ -34,18 +34,18 @@ static void	do_rotation(t_game *game)
 	double	old_vecdir_x;
 	double	old_plane_x;
 
-	old_vecdir_x = game->ray.vecdir_x;
-	old_plane_x = game->planepos_x;
 	if (game->move.rot_left == TRUE)
 	{
-		game->ray.vecdir_x = game->ray.vecdir_x * cos(ROTATE)
-			- game->ray.vecdir_y * sin(ROTATE);
-		game->ray.vecdir_y = old_vecdir_x * sin(ROTATE)
-			+ game->ray.vecdir_y + cos(ROTATE);
-		game->planepos_x = game->planepos_x * cos(ROTATE)
-			- game->planepos_y * sin(ROTATE);
-		game->planepos_y = old_plane_x * sin(ROTATE)
-			+ game->planepos_y * cos(ROTATE);
+		old_vecdir_x = game->ray.vecdir_x;
+		old_plane_x = game->planepos_x;
+		game->ray.vecdir_x = game->ray.vecdir_x * cos(-ROTATE)
+			- game->ray.vecdir_y * sin(-ROTATE);
+		game->ray.vecdir_y = old_vecdir_x * sin(-ROTATE) + game->ray.vecdir_y
+			* cos(-ROTATE);
+		game->planepos_x = game->planepos_x * cos(-ROTATE) - game->planepos_y
+			* sin(-ROTATE);
+		game->planepos_y = old_plane_x * sin(-ROTATE) + game->planepos_y
+			* cos(-ROTATE);
 	}
 	if (game->move.rot_right == TRUE)
 		rotate_right(game);
