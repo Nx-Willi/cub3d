@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/08/20 00:31:02 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/20 00:35:51 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	draw_wall_line(t_info *infos, int x)
 	//Drawing texture
 	y = game->draw.startdraw - 1;
 	init_texture_variables(game);
+	draw_ceilling_and_floor(infos, &game->draw, x);
 	while (++y <= game->draw.enddraw)
 	{
 		game->draw_text.tex_y = (int)game->draw_text.tex_pos
