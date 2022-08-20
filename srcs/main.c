@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/17 19:28:27 by william          ###   ########.fr       */
+/*   Updated: 2022/08/20 04:45:40 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int	main(int args, char **argv)
 	info.game.infos = &info;
 	init_ray_variables(&info.game);
 	tmp(&info);
+	info.map_height = get_map_height(info.i_map);
+	info.map_width = get_map_width(info.i_map);
 	init_mlx(&info);
-	do_raycasting(&info.game);
 	handler_events(&info);
 	mlx_loop(info.mlx.mlx);
 	return (0);

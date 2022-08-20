@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:46:35 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/19 22:27:25 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/20 04:44:11 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ struct	s_info
 	int		**i_map;
 	int		start_x;
 	int		start_y;
+	int		map_width;
+	int		map_height;
 	int		start_orientation;
 	char	*textures[4];
 	t_color	floor_color;

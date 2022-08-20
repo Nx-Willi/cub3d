@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   initialize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 05:58:43 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/20 05:03:55 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,7 @@ void	get_next_hitten_wall(t_game *game)
 			game->ray.pos_y += game->ray.step_y;
 			game->ray.side = TRUE;
 		}
-		if (!is_coordinate_in_map(game->infos, game->ray.pos_x,
-				game->ray.pos_y))
-			hit = TRUE;
-		else if (is_coordinate_in_map(game->infos, game->ray.pos_x,
-				game->ray.pos_y) && game->infos->i_map[game->ray.pos_y]
-			[game->ray.pos_x] > 0)
+		if (game->infos->i_map[game->ray.pos_y][game->ray.pos_x] > 0)
 			hit = TRUE;
 	}
 }

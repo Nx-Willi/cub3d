@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 18:20:03 by william           #+#    #+#             */
-/*   Updated: 2022/08/20 05:29:54 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/20 04:30:39 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ static void	do_line_movement(t_game *game)
 	info = game->infos;
 	if (game->move.forward == TRUE)
 	{
-		if (is_coordinate_in_map(info, (int)(game->ray.map_x
-				+ game->ray.vecdir_x * SPEED), (int)game->ray.map_y))
+		if (info->i_map[(int)game->ray.map_y]
+			[(int)(game->ray.map_x + game->ray.vecdir_x * SPEED)] == 0)
 			game->ray.map_x += game->ray.vecdir_x * SPEED;
-		if (is_coordinate_in_map(info, (int)game->ray.map_x,
-				(int)(game->ray.map_y + game->ray.vecdir_y * SPEED)))
+		if (info->i_map[(int)(game->ray.map_y
+				+ game->ray.vecdir_y * SPEED)][(int)game->ray.map_x] == 0)
 			game->ray.map_y += game->ray.vecdir_y * SPEED;
 	}
 	if (game->move.backward == TRUE)
 	{
-		if (is_coordinate_in_map(info, (int)(game->ray.map_x
-				- game->ray.vecdir_x * SPEED), (int)game->ray.map_y))
+		if (info->i_map[(int)game->ray.map_y]
+			[(int)(game->ray.map_x - game->ray.vecdir_x * SPEED)] == 0)
 			game->ray.map_x -= game->ray.vecdir_x * SPEED;
-		if (is_coordinate_in_map(info, (int)game->ray.map_x,
-				(int)(game->ray.map_y - game->ray.vecdir_y * SPEED)))
+		if (info->i_map[(int)(game->ray.map_y
+				- game->ray.vecdir_y * SPEED)][(int)game->ray.map_x] == 0)
 			game->ray.map_y -= game->ray.vecdir_y * SPEED;
 	}
 }
@@ -83,22 +83,23 @@ static void	do_side_movement(t_game *game)
 	info = game->infos;
 	if (game->move.left == TRUE)
 	{
-		if (is_coordinate_in_map(info, (int)(game->ray.map_x
-				+ game->ray.vecdir_y * SPEED), (int)(game->ray.map_y)))
+		if (info->i_map[(int)(game->ray.map_y)][(int)(game->ray.map_x
+			+ game->ray.vecdir_y * SPEED)] == 0)
 			game->ray.map_x += game->ray.vecdir_y * SPEED;
-		if (is_coordinate_in_map(info, (int)game->ray.map_x,
-				(int)(game->ray.map_y - game->ray.vecdir_x * SPEED)))
+		if (info->i_map[(int)(game->ray.map_y - game->ray.vecdir_x
+				* SPEED)][(int)game->ray.map_x] == 0)
 			game->ray.map_y -= game->ray.vecdir_x * SPEED;
 	}
 	if (game->move.right == TRUE)
 	{
-		if (is_coordinate_in_map(info, (int)(game->ray.map_x
-				- game->ray.vecdir_y * SPEED), (int)game->ray.map_y))
+		if (info->i_map[(int)game->ray.map_y][(int)(game->ray.map_x
+			- game->ray.vecdir_y * SPEED)] == 0)
 			game->ray.map_x -= game->ray.vecdir_y * SPEED;
-		if (is_coordinate_in_map(info, (int)game->ray.map_x,
-				(int)(game->ray.map_y + game->ray.vecdir_x * SPEED)))
+		if (info->i_map[(int)(game->ray.map_y + game->ray.vecdir_x
+				* SPEED)][(int)game->ray.map_x] == 0)
 			game->ray.map_y += game->ray.vecdir_x * SPEED;
 	}
+	check_player_side_wall(game);
 }
 
 void	check_for_moves(t_info *info)

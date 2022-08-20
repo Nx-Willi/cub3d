@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
+#    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/19 22:29:25 by xle-baux         ###   ########.fr        #
+#    Updated: 2022/08/20 04:41:44 by wdebotte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c init_main.c \
 								parser_tools_1.c parser_tools_2.c \
 								tab_char_to_int.c tmp_parser_tools.c) \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
-								ft_split_piscine.c my_mlx_pixel_put.c) \
-			$(addprefix ${PATHSRCS}hooks/, ) \
+								ft_split_piscine.c my_mlx_pixel_put.c \
+								get_tab_infos.c is_coordinate_in_map.c) \
 			$(addprefix ${PATHSRCS}raycast/, raycast.c initialize.c \
 								movements.c draw_map.c)
 
