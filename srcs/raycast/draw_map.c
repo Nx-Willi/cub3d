@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/08/20 00:35:51 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/20 04:07:10 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	draw_ceilling_and_floor(t_info *infos, t_draw *draw, int x)
 			* infos->mlx.img.bits_per_pixel / 8] = infos->ceilling_color.b;
 	}
 	y = draw->enddraw - 1;
-	while (++y < infos->mlx.win_heigth)
+	while (++y < infos->mlx.win_heigth && y > 0)
 	{
 		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
 			* infos->mlx.img.bits_per_pixel / 8 + 2] = infos->floor_color.r;
@@ -120,5 +120,4 @@ void	draw_wall_line(t_info *infos, int x)
 		game->draw_text.tex_pos += game->draw_text.step;
 		put_texture(infos, game, x, y);
 	}
-	//
 }

@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 10:18:54 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/11 14:08:50 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/20 05:14:29 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	print_info_struct(t_info info)
 	int	i;
 
 	i = 0;
-	printf("NO:\t\t%s", info.textures[T_NO]);
-	printf("SO:\t\t%s", info.textures[T_SO]);
-	printf("WE:\t\t%s", info.textures[T_WE]);
-	printf("EA:\t\t%s\n", info.textures[T_EA]);
+	printf("NO:\t\t%s\n", info.textures[T_NO]);
+	printf("SO:\t\t%s\n", info.textures[T_SO]);
+	printf("WE:\t\t%s\n", info.textures[T_WE]);
+	printf("EA:\t\t%s\n\n", info.textures[T_EA]);
 	printf("Floor Color:\tr=%i g=%i b=%i\n",
 		info.floor_color.r, info.floor_color.g, info.floor_color.b);
 	printf("Ceilling Color:\tr=%i g=%i b=%i\n\n", info.ceilling_color.r,
