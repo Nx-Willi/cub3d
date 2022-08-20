@@ -6,22 +6,11 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 05:08:15 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/20 21:50:38 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// static void	tmp(t_info *infos)
-// {
-// 	int	i;
-// //
-// 	i = -1;
-// 	while (++i < 4)
-// 	{
-// 		ft_strlcpy(infos->textures[i], infos->textures[i], ft_strlen(infos->textures[i]));
-// 	}
-// }
 
 int	main(int args, char **argv)
 {

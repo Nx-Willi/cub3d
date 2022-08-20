@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 14:55:13 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/17 14:47:11 by xle-baux         ###   ########.fr       */
+/*   Created: 2022/08/07 14:54:13 by xle-baux          #+#    #+#             */
+/*   Updated: 2022/08/20 21:38:29 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static int	fill_map(t_info *info, t_check_info *sizes, char **line);
+// static void	replace_to_wall(char **char_map);
 
 int	get_map(t_info *info, char **line)
 {
@@ -47,6 +48,7 @@ static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 		i++;
 	}
 	char_map[j] = NULL;
+	// replace_to_wall(char_map);
 	if (check_map(info, sizes, char_map) == FALSE)
 		return (free_char_char(char_map), FALSE);
 	info->i_map = tab_char_to_int(sizes, char_map);
@@ -55,3 +57,20 @@ static int	fill_map(t_info *info, t_check_info *sizes, char **line)
 	free_char_char(char_map);
 	return (TRUE);
 }
+
+// static void	replace_to_wall(char **char_map)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = -1;
+// 	while (char_map[++i] != NULL)
+// 	{
+// 		j = -1;
+// 		while (char_map[i][++j])
+// 		{
+// 			if (char_map[i][j] == ' ' || char_map[i][j] == '\n')
+// 				char_map[i][j] = '1';
+// 		}
+// 	}
+// }

@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:58:38 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/11 14:09:25 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/20 21:50:20 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,56 @@ static void	fill_tab_line(t_check_info *t_infos, int i,
 	i_map[i][n] = TAB_NULL;
 }
 
+static int	check_in_walls(t_check_info *check_info, int **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (++i < check_info->len_y - 1)
+	{
+		j = 0;
+		while (++j < check_info->len_x - 2)
+		{
+			if (map[i][j] == 0)
+			{
+				if (map[i - 1][j - 1] == -1 || map[i - 1][j] == -1
+					|| map[i - 1][j + 1] == -1
+					|| map[i][j - 1] == -1 || map[i][j + 1] == -1
+					|| map[i + 1][j - 1] == -1 || map[i + 1][j] == -1
+					|| map[i + 1][j + 1] == -1)
+					return (FALSE);
+			}
+		}
+	}
+	return (TRUE);
+}
+
+static int	check_out_walls(t_check_info *check_info, int **map)
+{
+	int	i;
+
+	i = -1;
+	while (map[0][++i] != TAB_NULL)
+		if (map[0][i] == 0)
+			return (FALSE);
+	i = -1;
+	while (map[check_info->len_y - 1][++i] != TAB_NULL)
+		if (map[check_info->len_y - 1][i] == 0)
+			return (FALSE);
+	i = -1;
+	while (map[++i] != NULL)
+		if (map[i][0] == 0)
+			return (FALSE);
+	i = -1;
+	while (map[++i] != NULL)
+		if (map[i][check_info->len_x - 2] == 0)
+			return (FALSE);
+	if (check_in_walls(check_info, map) == FALSE)
+		return (FALSE);
+	return (TRUE);
+}
+
 int	**tab_char_to_int(t_check_info *t_infos, char **char_map)
 {
 	int	i;
@@ -56,5 +106,7 @@ int	**tab_char_to_int(t_check_info *t_infos, char **char_map)
 		fill_tab_line(t_infos, i, i_map, char_map);
 	}
 	i_map[i] = NULL;
+	if (check_out_walls(t_infos, i_map) == FALSE)
+		return (printf("Error\nThe map must be surrounded by walls.\n"), NULL);
 	return (i_map);
 }
