@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/08/20 05:55:30 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/21 15:25:35 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,20 +107,27 @@ static void	draw_ceilling_and_floor(t_info *infos, t_draw *draw, int x)
 
 void	draw_wall_line(t_info *infos, int x)
 {
+	int		tmp;
 	int		y;
 	t_game	*game;
 
 	game = &infos->game;
-	draw_ceilling_and_floor(infos, &game->draw, x);
 	y = game->draw.startdraw - 1;
 	init_texture_variables(game);
 	while ((x >= 0 && x <= infos->mlx.win_width)
 		&& (++y >= 0 && y <= infos->mlx.win_heigth)
 		&& y <= game->draw.enddraw)
 	{
-		game->draw_text.tex_y = (int)game->draw_text.tex_pos
-			& (game->textures[game->draw_text.texture].height - 1);
-		game->draw_text.tex_pos += game->draw_text.step;
+		tmp = y * game->textures[game->draw_text.texture].line_length
+			- infos->mlx.win_heigth
+			* game->textures[game->draw_text.texture].line_length / 2
+			+ game->ray.line_height
+			* game->textures[game->draw_text.texture].line_length / 2;
+		game->draw_text.tex_y = ((tmp
+					* game->textures[game->draw_text.texture].height)
+				/ game->ray.line_height)
+			/ game->textures[game->draw_text.texture].line_length;
 		put_texture(infos, game, x, y);
 	}
+	draw_ceilling_and_floor(infos, &game->draw, x);
 }
