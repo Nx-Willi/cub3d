@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 04:45:40 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:26:59 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	tmp(t_info *infos)
-{
-	int	i;
-//
-	i = -1;
-	while (++i < 4)
-	{
-		ft_strlcpy(infos->textures[i], infos->textures[i],
-			ft_strlen(infos->textures[i]));
-	}
-}
 
 int	main(int args, char **argv)
 {
@@ -38,7 +26,6 @@ int	main(int args, char **argv)
 	print_info_struct(info);
 	info.game.infos = &info;
 	init_ray_variables(&info.game);
-	tmp(&info);
 	info.map_height = get_map_height(info.i_map);
 	info.map_width = get_map_width(info.i_map);
 	init_mlx(&info);
