@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 05:00:36 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:40:40 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,12 @@ void	handler_events(t_info *info);
 int		check_file(char *path);
 int		get_map_width(int **map);
 int		get_map_height(int **map);
-int		is_coordinate_in_map(t_info *infos, int x, int y);
+int		is_coordinate_in_map(t_info *infos, double x, double y);
 
 char	**ft_split_piscine(char *str, char *charset);
 
 void	exit_program(t_info *info, char *error, int status);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-
 //____>FREES____________________________________________________________________
 void	free_mlx(t_mlx *mlx);
 void	free_char_char(char **str);

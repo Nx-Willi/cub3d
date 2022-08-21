@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/08/21 15:25:35 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:45:54 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static void	init_texture_variables(t_game *game)
 {
 	get_texture(game);
 	if (game->ray.side == FALSE)
-		game->draw_text.wall_x = game->ray.pos_y + game->ray.walldist
+		game->draw_text.wall_x = game->ray.map_y + game->ray.walldist
 			* game->ray.raydir_y;
 	else
-		game->draw_text.wall_x = game->ray.pos_x + game->ray.walldist
+		game->draw_text.wall_x = game->ray.map_x + game->ray.walldist
 			* game->ray.raydir_x;
 	game->draw_text.wall_x -= floor(game->draw_text.wall_x);
 	game->draw_text.tex_x = (int)(game->draw_text.wall_x
