@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   initialize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/21 14:12:00 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/20 05:03:55 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,7 @@ void	get_next_hitten_wall(t_game *game)
 			game->ray.pos_y += game->ray.step_y;
 			game->ray.side = TRUE;
 		}
-		if (!is_coordinate_in_map(game->infos, game->ray.pos_x,
-				game->ray.pos_y))
-			hit = TRUE;
-		else if (is_coordinate_in_map(game->infos, game->ray.pos_x,
-				game->ray.pos_y) && game->infos->i_map[game->ray.pos_y]
-			[game->ray.pos_x] > 0)
+		if (game->infos->i_map[game->ray.pos_y][game->ray.pos_x] > 0)
 			hit = TRUE;
 	}
 }
@@ -117,8 +112,6 @@ void	get_wall_and_draw_distance(t_game *game)
 		game->ray.walldist = game->ray.sidedist_y - game->ray.deltadist_y;
 	game->ray.line_height = (int)(game->infos->mlx.win_heigth
 			/ game->ray.walldist);
-	if (game->ray.line_height == 0)
-		game->ray.line_height = 1;
 	game->draw.startdraw = -game->ray.line_height / 2
 		+ game->infos->mlx.win_heigth / 2;
 	if (game->draw.startdraw < 0)

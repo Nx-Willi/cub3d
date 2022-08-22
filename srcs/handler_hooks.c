@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:41:43 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/19 21:19:03 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/20 01:39:33 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	handler_keypress(int keycode, t_info *info)
 {
 	t_move	*move;
 
-	printf("%i\n", keycode);
 	move = &info->game.move;
 	if (keycode == KEY_ESC)
 		exit_program(info, NULL, EXIT_SUCCESS);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 14:54:13 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/20 21:38:29 by xle-baux         ###   ########.fr       */
+/*   Created: 2022/08/07 14:55:13 by xle-baux          #+#    #+#             */
+/*   Updated: 2022/08/22 16:41:58 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	get_map(t_info *info, char **line)
 	get_largest_map_line(&sizes, line);
 	if (fill_map(info, &sizes, line) == FALSE)
 		return (FALSE);
-	// info->len_x = sizes.len_x;
-	// info->len_y = sizes.len_y;
 	return (TRUE);
 }
 

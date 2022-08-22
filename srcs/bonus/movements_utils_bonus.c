@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movements_utils_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/20 02:06:19 by wdebotte          #+#    #+#             */
+/*   Updated: 2022/08/21 18:26:46 by xle-baux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+
+#define MARGIN	0.05
+
+void	check_player_side_wall(t_game *game)
+{
+	t_info	*info;
+
+	info = game->infos;
+	if (game->move.left == TRUE)
+	{
+		if (info->i_map[(int)game->ray.map_y]
+			[(int)(game->ray.map_x + MARGIN)] == 1)
+			game->ray.map_x -= MARGIN;
+		if (info->i_map[(int)(game->ray.map_y - MARGIN)]
+			[(int)game->ray.map_x] == 1)
+			game->ray.map_y += MARGIN;
+	}
+	if (game->move.right == TRUE)
+	{
+		if (info->i_map[(int)game->ray.map_y][(int)(game->ray.map_x
+			- MARGIN)] == 1)
+			game->ray.map_x += MARGIN;
+		if (info->i_map[(int)(game->ray.map_y + MARGIN)]
+			[(int)game->ray.map_x] == 1)
+			game->ray.map_y -= MARGIN;
+	}
+}

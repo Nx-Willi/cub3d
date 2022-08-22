@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   get_tab_infos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 13:56:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 02:07:45 by wdebotte         ###   ########.fr       */
+/*   Created: 2022/08/20 04:33:27 by wdebotte          #+#    #+#             */
+/*   Updated: 2022/08/20 05:09:57 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	do_raycasting(t_game *game)
+int	get_map_width(int **map)
 {
+	int	y;
 	int	x;
+	int	tmp;
 
-	x = -1;
-	while (++x < game->infos->mlx.win_width)
+	if (map == NULL)
+		return (-1);
+	tmp = -1;
+	y = -1;
+	while (map[++y] != NULL)
 	{
-		ray_calculs(game, x);
-		get_step_for_ray(game);
-		get_next_hitten_wall(game);
-		get_wall_and_draw_distance(game);
-		draw_wall_line(game->infos, x);
+		x = 0;
+		while (map[y][x] != TAB_NULL)
+			x++;
+		if (tmp < x)
+			tmp = x;
 	}
-	mlx_put_image_to_window(game->infos->mlx.mlx, game->infos->mlx.window,
-		game->infos->mlx.img.img, 0, 0);
-	check_for_moves(game->infos);
-	return (0);
+	return (tmp);
+}
+
+int	get_map_height(int **map)
+{
+	int	y;
+
+	if (map == NULL)
+		return (-1);
+	y = -1;
+	while (map[++y] != NULL)
+		continue ;
+	return (y);
 }

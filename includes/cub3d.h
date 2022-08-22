@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 00:31:32 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:40:40 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include <X11/Xlib.h>
 
 # define TAB_NULL	3
-# define SPEED		0.3
-# define ROTATE		0.03
+# define SPEED		0.2
+# define ROTATE		0.05
 
 //__>ENUMS______________________________________________________________________
 enum	e_keys
@@ -100,6 +100,7 @@ void	get_next_hitten_wall(t_game *game);
 void	get_wall_and_draw_distance(t_game *game);
 void	draw_wall_line(t_info *infos, int x);
 void	check_for_moves(t_info *info);
+void	check_player_side_wall(t_game *game);
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>HOOKS______________________________________________________________________
@@ -108,12 +109,14 @@ void	handler_events(t_info *info);
 
 //__>UTILS______________________________________________________________________
 int		check_file(char *path);
+int		get_map_width(int **map);
+int		get_map_height(int **map);
+int		is_coordinate_in_map(t_info *infos, double x, double y);
 
 char	**ft_split_piscine(char *str, char *charset);
 
 void	exit_program(t_info *info, char *error, int status);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-
 //____>FREES____________________________________________________________________
 void	free_mlx(t_mlx *mlx);
 void	free_char_char(char **str);

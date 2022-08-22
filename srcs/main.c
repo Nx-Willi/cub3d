@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 21:50:38 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:41:13 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(int args, char **argv)
 	print_info_struct(info);
 	info.game.infos = &info;
 	init_ray_variables(&info.game);
-	// tmp(&info);
+	info.map_height = get_map_height(info.i_map);
+	info.map_width = get_map_width(info.i_map);
 	init_mlx(&info);
-	do_raycasting(&info.game);
 	handler_events(&info);
 	mlx_loop(info.mlx.mlx);
 	return (0);
