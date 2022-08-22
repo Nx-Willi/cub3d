@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:52:02 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/10 18:12:44 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:05:19 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_infos(t_info *info, char **line)
 		i++;
 	while (line[i])
 	{
-		split_line = ft_split(line[i++], ' ');
+		split_line = ft_split_piscine(line[i++], " \n");
 		if (!line)
 			break ;
 		get_type_id(info, split_line);

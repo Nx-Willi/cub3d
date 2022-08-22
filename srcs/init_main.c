@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:42:45 by william           #+#    #+#             */
-/*   Updated: 2022/08/19 20:56:21 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:27:37 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,6 @@ void	init_mlx(t_info *infos)
 	if (mlx->mlx == NULL)
 		exit_program(infos, "Unable to init mlx!\n", EXIT_FAILURE);
 	mlx_get_screen_size(mlx->mlx, &mlx->win_width, &mlx->win_heigth);
-	// mlx->win_width -= 800;
-	// mlx->win_heigth -= 500;
-	// mlx->win_width = 640;
-	// mlx->win_heigth = 360;
 	mlx->win_width = 1920;
 	mlx->win_heigth = 1080;
 	mlx->window = mlx_new_window(mlx->mlx, mlx->win_width, mlx->win_heigth,

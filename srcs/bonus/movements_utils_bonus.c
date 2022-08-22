@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:06:19 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/20 04:30:45 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:26:46 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	check_player_side_wall(t_game *game)
 {
-	t_info *info;
+	t_info	*info;
 
 	info = game->infos;
 	if (game->move.left == TRUE)
