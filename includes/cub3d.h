@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/21 18:40:40 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:39:52 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define TAB_NULL	3
 # define SPEED		0.2
 # define ROTATE		0.05
+# define FOV		0.66
 
 //__>ENUMS______________________________________________________________________
 enum	e_keys
@@ -112,6 +113,7 @@ int		check_file(char *path);
 int		get_map_width(int **map);
 int		get_map_height(int **map);
 int		is_coordinate_in_map(t_info *infos, double x, double y);
+int		is_coordinate_in_screen(t_info *infos, double x, double y);
 
 char	**ft_split_piscine(char *str, char *charset);
 

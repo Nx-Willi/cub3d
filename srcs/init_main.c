@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:42:45 by william           #+#    #+#             */
-/*   Updated: 2022/08/21 18:27:37 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:05:16 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void	init_ray_variables(t_game *game)
 	game->planepos_x = 0;
 	game->planepos_y = 0;
 	if (game->infos->start_orientation == NO)
-		game->planepos_x = 0.66;
+		game->planepos_x = FOV;
 	else if (game->infos->start_orientation == SO)
-		game->planepos_x = -0.66;
+		game->planepos_x = -FOV;
 	else if (game->infos->start_orientation == EA)
-		game->planepos_y = 0.66;
+		game->planepos_y = FOV;
 	else if (game->infos->start_orientation == WE)
-		game->planepos_y = -0.66;
+		game->planepos_y = -FOV;
 	get_initial_vector_direction(game);
 	init_moves_variables(&game->move);
 }
