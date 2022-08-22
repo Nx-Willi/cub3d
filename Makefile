@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+         #
+#    By: william <william@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/20 04:41:44 by wdebotte         ###   ########.fr        #
+#    Updated: 2022/08/22 15:49:51 by william          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PATHLIBFT	= ${PATHLIBS}libft/
 PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
-SRCS		= $(addprefix ${PATHSRCS}, main.c init_main.c \
+COMMON_SRCS	= $(addprefix ${PATHSRCS}, main.c init_main.c \
 								handler_hooks.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c is_info.c \
 								get_infos.c get_map.c check_map.c \
@@ -44,10 +44,16 @@ SRCS		= $(addprefix ${PATHSRCS}, main.c init_main.c \
 			$(addprefix ${PATHSRCS}utils/, exit.c file.c free_stuff.c \
 								ft_split_piscine.c my_mlx_pixel_put.c \
 								get_tab_infos.c is_coordinate_in_map.c) \
-			$(addprefix ${PATHSRCS}raycast/, raycast.c initialize.c \
-								movements.c draw_map.c)
+			$(addprefix ${PATHSRCS}raycast/, raycast.c draw_map.c)
 
-OBJS		= ${SRCS:.c=.o}
+MAND_SRCS	= $(addprefix ${PATHSRCS}raycast/, initialize.c movements.c)
+
+BONUS_SRCS	= $(addprefix ${PATHSRCS}bonus/, initialize_bonus.c \
+								movements_bonus.c movements_utils_bonus.c)
+
+OBJS		= ${COMMON_SRCS:.c=.o}
+OBJS_MAND	= ${MAND_SRCS:.c=.o}
+OBJS_BONUS	= ${BONUS_SRCS:.c=.o}
 HEADERS		= ${PATHHEADERS}
 
 CC			= clang
@@ -72,19 +78,27 @@ LIBS		= ${LIBFT} ${MLX} ${MATH}
 				@echo "${BOLD}${YELLOW}Compiling:${END}\t$<"
 				@${CC} ${CFLAGS} ${INCS} -c $< -o ${<:.c=.o} >${PATHNULL}
 
-all:		${NAME}
+all:		libs ${NAME}
 
-${NAME}:	${OBJS}
+libs:
 				@echo "${BOLD}${GREEN}Building:${END}\tlibft.a"
 				@${MAKE} ${PATHLIBFT} >${PATHNULL}
 				@echo "${BOLD}${GREEN}Building:${END}\tminilibx"
 				@${MAKE} ${PATHMLX} >${PATHNULL} 2>${PATHNULL}
+
+${NAME}:	${OBJS} ${OBJS_MAND}
 				@echo "${BOLD}${GREEN}Building:${END}\t${NAME}"
-				@${CC} ${OBJS} ${INCS} ${LIBS} -o ${NAME} >${PATHNULL}
+				@${CC} ${OBJS} ${OBJS_MAND} ${INCS} ${LIBS} -o ${NAME}\
+					>${PATHNULL}
+
+bonus:		libs ${OBJS} ${OBJS_BONUS}
+				@echo "${BOLD}${GREEN}Building:${END}\t${NAME}"
+				@${CC} ${OBJS} ${OBJS_BONUS} ${INCS} ${LIBS} -o ${NAME}\
+					>${PATHNULL}
 
 clean:
 				@echo "${BOLD}${RED}Removing:${END}\tAll .o files"
-				@${RM} ${OBJS} >${PATHNULL}
+				@${RM} ${OBJS} ${OBJS_MAND} ${OBJS_BONUS} >${PATHNULL}
 
 fclean:		clean
 				@${MAKE} ${PATHLIBFT} fclean >${PATHNULL}
@@ -95,7 +109,7 @@ fclean:		clean
 
 norminette:
 				@echo "${BOLD}${YELLOW}Norminette:${END}\tAll .c files"
-				${NORM} ${SRCS}
+				${NORM} ${COMMON_SRCS} ${MAND_SRCS} ${BONUS_SRCS}
 				@echo "${BOLD}${GREEN}Norminette:${END}\tOK !\n"
 				@echo "${BOLD}${YELLOW}Norminette:${END}\tAll .h files"
 				${NORM} ${HEADERS}
@@ -103,6 +117,6 @@ norminette:
 
 re:			fclean all
 
-.PHONY:		all clean fclean re norminette
+.PHONY:		all clean fclean re norminette bonus libs
 
 ################################################################################
