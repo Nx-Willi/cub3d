@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: william <william@student.42.fr>            +#+  +:+       +#+         #
+#    By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/04 16:13:46 by wdebotte          #+#    #+#              #
-#    Updated: 2022/08/22 15:49:51 by william          ###   ########.fr        #
+#    Updated: 2022/08/27 15:58:08 by xle-baux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PATHLIBFT	= ${PATHLIBS}libft/
 PATHMLX		= ${PATHLIBS}minilibx/
 PATHNULL	= /dev/null
 
-COMMON_SRCS	= $(addprefix ${PATHSRCS}, main.c init_main.c \
+COMMON_SRCS	= $(addprefix ${PATHSRCS}, main.c \
 								handler_hooks.c) \
 			$(addprefix ${PATHSRCS}parser/, parser.c check_infos.c is_info.c \
 								get_infos.c get_map.c check_map.c \
@@ -46,10 +46,12 @@ COMMON_SRCS	= $(addprefix ${PATHSRCS}, main.c init_main.c \
 								get_tab_infos.c is_coordinate_in_map.c) \
 			$(addprefix ${PATHSRCS}raycast/, raycast.c draw_map.c)
 
-MAND_SRCS	= $(addprefix ${PATHSRCS}raycast/, initialize.c movements.c)
+MAND_SRCS	= $(addprefix ${PATHSRCS}raycast/, initialize.c movements.c) \
+			$(addprefix ${PATHSRCS}, init_main.c)
 
 BONUS_SRCS	= $(addprefix ${PATHSRCS}bonus/, initialize_bonus.c \
-								movements_bonus.c movements_utils_bonus.c)
+								movements_bonus.c movements_utils_bonus.c \
+								init_main_bonus.c minimap_bonus.c)
 
 OBJS		= ${COMMON_SRCS:.c=.o}
 OBJS_MAND	= ${MAND_SRCS:.c=.o}

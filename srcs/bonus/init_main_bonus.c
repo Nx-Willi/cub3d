@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_main.c                                        :+:      :+:    :+:   */
+/*   init_main_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 19:42:45 by william           #+#    #+#             */
-/*   Updated: 2022/08/27 15:45:30 by xle-baux         ###   ########.fr       */
+/*   Created: 2022/08/27 15:46:11 by xle-baux          #+#    #+#             */
+/*   Updated: 2022/08/27 15:46:49 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	init_mlx(t_info *infos)
 	mlx->img.img = mlx_new_image(mlx->mlx, mlx->win_width, mlx->win_heigth);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
+	init_minimap(infos);
 	init_textures(infos);
 }
 

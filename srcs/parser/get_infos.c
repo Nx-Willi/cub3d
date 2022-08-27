@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 13:52:02 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/08/22 16:41:25 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/08/27 16:27:43 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ void	get_infos(t_info *info, char **line)
 		split_line = ft_split_piscine(line[i++], " \n");
 		if (!line)
 			break ;
-		// int j = -1;
-		// while (split_line[++j] != NULL)
-		// 	printf(">>%s\n", split_line[j]);
-		// printf(">\n");
 		get_type_id(info, split_line);
 		free_char_char(split_line);
 		while (line[i] && is_empty_line(line[i]) == TRUE)
