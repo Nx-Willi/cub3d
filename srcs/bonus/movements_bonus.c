@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 18:20:03 by william           #+#    #+#             */
-/*   Updated: 2022/08/20 04:30:39 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:09:27 by william          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ static void	do_line_movement(t_game *game)
 	info = game->infos;
 	if (game->move.forward == TRUE)
 	{
-		if (info->i_map[(int)game->ray.map_y]
-			[(int)(game->ray.map_x + game->ray.vecdir_x * SPEED)] == 0)
+		if (is_coordinate_walkable(info, game->ray.map_x + game->ray.vecdir_x
+			* SPEED, game->ray.map_y))
 			game->ray.map_x += game->ray.vecdir_x * SPEED;
-		if (info->i_map[(int)(game->ray.map_y
-				+ game->ray.vecdir_y * SPEED)][(int)game->ray.map_x] == 0)
+		if (is_coordinate_walkable(info, game->ray.map_x, game->ray.map_y
+			+ game->ray.vecdir_y * SPEED))
 			game->ray.map_y += game->ray.vecdir_y * SPEED;
 	}
 	if (game->move.backward == TRUE)
 	{
-		if (info->i_map[(int)game->ray.map_y]
-			[(int)(game->ray.map_x - game->ray.vecdir_x * SPEED)] == 0)
+		if (is_coordinate_walkable(info, game->ray.map_x - game->ray.vecdir_x
+			* SPEED, game->ray.map_y))
 			game->ray.map_x -= game->ray.vecdir_x * SPEED;
-		if (info->i_map[(int)(game->ray.map_y
-				- game->ray.vecdir_y * SPEED)][(int)game->ray.map_x] == 0)
+		if (is_coordinate_walkable(info, game->ray.map_x, game->ray.map_y
+			- game->ray.vecdir_y * SPEED))
 			game->ray.map_y -= game->ray.vecdir_y * SPEED;
 	}
 }
@@ -83,21 +83,21 @@ static void	do_side_movement(t_game *game)
 	info = game->infos;
 	if (game->move.left == TRUE)
 	{
-		if (info->i_map[(int)(game->ray.map_y)][(int)(game->ray.map_x
-			+ game->ray.vecdir_y * SPEED)] == 0)
-			game->ray.map_x += game->ray.vecdir_y * SPEED;
-		if (info->i_map[(int)(game->ray.map_y - game->ray.vecdir_x
-				* SPEED)][(int)game->ray.map_x] == 0)
-			game->ray.map_y -= game->ray.vecdir_x * SPEED;
+		if (is_coordinate_walkable(info, game->ray.map_x
+			+ game->ray.vecdir_y * SPEED / 2, game->ray.map_y))
+			game->ray.map_x += game->ray.vecdir_y * SPEED / 2;
+		if (is_coordinate_walkable(info, game->ray.map_x, game->ray.map_y
+			- game->ray.vecdir_x * SPEED / 2))
+			game->ray.map_y -= game->ray.vecdir_x * SPEED / 2;
 	}
 	if (game->move.right == TRUE)
 	{
-		if (info->i_map[(int)game->ray.map_y][(int)(game->ray.map_x
-			- game->ray.vecdir_y * SPEED)] == 0)
-			game->ray.map_x -= game->ray.vecdir_y * SPEED;
-		if (info->i_map[(int)(game->ray.map_y + game->ray.vecdir_x
-				* SPEED)][(int)game->ray.map_x] == 0)
-			game->ray.map_y += game->ray.vecdir_x * SPEED;
+		if (is_coordinate_walkable(info, game->ray.map_x - game->ray.vecdir_y
+			* SPEED / 2, game->ray.map_y))
+			game->ray.map_x -= game->ray.vecdir_y * SPEED / 2;
+		if (is_coordinate_walkable(info, game->ray.map_x, game->ray.map_y
+			+ game->ray.vecdir_x * SPEED / 2))
+			game->ray.map_y += game->ray.vecdir_x * SPEED / 2;
 	}
 	check_player_side_wall(game);
 }
