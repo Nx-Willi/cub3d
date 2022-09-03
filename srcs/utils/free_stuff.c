@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:11:31 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/17 16:25:56 by william          ###   ########.fr       */
+/*   Updated: 2022/09/03 12:02:23 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	free_mlx(t_mlx *mlx)
 	mlx_loop_end(mlx->mlx);
 	mlx_destroy_window(mlx->mlx, mlx->window);
 	mlx_destroy_image(mlx->mlx, mlx->img.img);
+
+//	TMP: see to separate to bonus files_________________________________________
+	mlx_destroy_image(mlx->mlx, mlx->img_minimap.img);
+//	____________________________________________________________________________
+
 	i = -1;
 	while (++i < 4)
 		if (mlx->infos->game.textures[i].img != NULL)
