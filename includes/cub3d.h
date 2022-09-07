@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/09/04 13:50:56 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:41:34 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define TAB_NULL	3
 # define PLY_WEIGHT	0.2
 # ifndef SPEED
-#  define SPEED		1
+#  define SPEED		0.2
 # endif
 # ifndef ROTATE
 #  define ROTATE	0.05
