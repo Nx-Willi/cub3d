@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:09:24 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/22 16:41:13 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/09/07 16:07:13 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int args, char **argv)
 		return (1);
 	if (parser(&info, argv[1]) == FALSE)
 		return (free_info_struct(&info), 2);
-	print_info_struct(info);
 	info.game.infos = &info;
 	init_ray_variables(&info.game);
 	info.map_height = get_map_height(info.i_map);

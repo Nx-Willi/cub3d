@@ -1,10 +1,10 @@
-EA ./textures/bluestone.xpm
+EA ./textures/colorstone.xpm
+SO ./textures/greystone.xpm
 NO ./textures/redbrick.xpm
-SO ./textures/colorstone.xpm
-WE ./textures/test.xpm
+WE ./textures/wood.xpm
 
-F 255,255,153
-C 0,128,255
+F 153,102,51
+C 51,204,255
 
 11111111111111111111111111111
 10000000000000000000000000001

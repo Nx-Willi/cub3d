@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/09/07 14:27:56 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/09/07 16:08:42 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ void	draw_wall_line(t_info *infos, int x)
 					* game->textures[game->draw_text.texture].height)
 				/ game->ray.line_height)
 			/ game->textures[game->draw_text.texture].line_length;
+		if (game->draw_text.tex_y < 0)
+			game->draw_text.tex_y = 0;
 		put_texture(infos, game, x, y);
 	}
 	draw_ceilling_and_floor(infos, &game->draw, x);
