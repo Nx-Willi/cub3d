@@ -6,13 +6,24 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 13:14:10 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/09/03 12:02:34 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:27:05 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-#define CUBE_SIZE 5
+static int	get_cube_size(t_mlx *mlx, t_info *infos)
+{
+	int	max_map_size;
+	int	cube_size;
+
+	max_map_size = mlx->win_width / 5;
+	cube_size = 1;
+	while (((infos->map_width * cube_size) < max_map_size)
+		&& ((infos->map_height * cube_size) < max_map_size))
+		cube_size++;
+	return (cube_size);
+}
 
 static void	put_pixel_color(t_mlx *mlx, int x, int y, int trgb)
 {
@@ -28,13 +39,15 @@ static void	draw_cube(t_mlx *mlx, int start_x, int start_y, int type)
 {
 	int	x;
 	int	y;
+	int	cube_size;
 
 	x = start_x;
 	y = start_y;
-	while (y >= start_y - CUBE_SIZE)
+	cube_size = get_cube_size(mlx, mlx->infos);
+	while (y >= start_y - cube_size)
 	{
 		x = start_x;
-		while (x <= start_x + CUBE_SIZE)
+		while (x <= start_x + cube_size)
 		{
 			if (type == 3)
 				put_pixel_color(mlx, x, y, 0x00FF0000);
@@ -48,29 +61,15 @@ static void	draw_cube(t_mlx *mlx, int start_x, int start_y, int type)
 	}
 }
 
-static void	get_minimap_size(t_info *infos, int len_map[2])
-{
-	int	i;
-
-	i = 0;
-	while (infos->i_map[0][i] != TAB_NULL)
-		i++;
-	len_map[0] = i;
-	i = 0;
-	while (infos->i_map[i] != NULL)
-		i++;
-	len_map[1] = i;
-}
-
 void	init_minimap(t_info *infos)
 {
-	int		len_map[2];
+	int		cube_size;
 	t_mlx	*mlx;
 
 	mlx = &infos->mlx;
-	get_minimap_size(infos, len_map);
-	mlx->img_minimap.img = mlx_new_image(mlx->mlx, len_map[0]
-			* CUBE_SIZE, len_map[1] * CUBE_SIZE);
+	cube_size = get_cube_size(&infos->mlx, infos);
+	mlx->img_minimap.img = mlx_new_image(mlx->mlx, infos->map_width
+			* cube_size, infos->map_height * cube_size);
 	mlx->img_minimap.addr = mlx_get_data_addr(mlx->img_minimap.img,
 			&mlx->img_minimap.bits_per_pixel,
 			&mlx->img_minimap.line_length,
@@ -81,10 +80,10 @@ void	minimap(t_info *infos)
 {
 	int		x;
 	int		y;
-	int		len_map[2];
+	int		cube_size;
 	t_mlx	*mlx;
 
-	get_minimap_size(infos, len_map);
+	cube_size = get_cube_size(&infos->mlx, infos);
 	mlx = &infos->mlx;
 	y = -1;
 	while (infos->i_map[++y] != NULL)
@@ -94,13 +93,13 @@ void	minimap(t_info *infos)
 		{
 			if (x == (int)infos->game.ray.map_x
 				&& y == (int)infos->game.ray.map_y)
-				draw_cube(mlx, (x * CUBE_SIZE), CUBE_SIZE + (y * CUBE_SIZE), 3);
+				draw_cube(mlx, (x * cube_size), cube_size + (y * cube_size), 3);
 			else
-				draw_cube(mlx, (x * CUBE_SIZE), CUBE_SIZE + (y * CUBE_SIZE),
+				draw_cube(mlx, (x * cube_size), cube_size + (y * cube_size),
 					infos->i_map[y][x]);
 		}
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img_minimap.img,
-		mlx->win_width - (len_map[0] * CUBE_SIZE) - 10, mlx->win_heigth
-		- (len_map[1] * CUBE_SIZE) - 10);
+		10, mlx->win_heigth
+		- (infos->map_height * cube_size) - 10);
 }
