@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/08/22 16:42:28 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:15:42 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,47 +61,47 @@ static void	put_texture(t_info *infos, t_game *game, int x, int y)
 
 	texture = game->draw_text.texture;
 	infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-		* infos->mlx.img.bits_per_pixel / 8]
+		* (infos->mlx.img.bits_per_pixel / 8)]
 		= game->textures[texture].addr[game->draw_text.tex_y
 		* game->textures[texture].line_length + game->draw_text.tex_x
 		* (game->textures[texture].bits_per_pixel / 8)];
 	infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-		* infos->mlx.img.bits_per_pixel / 8 + 1]
+		* (infos->mlx.img.bits_per_pixel / 8) + 1]
 		= game->textures[texture].addr[game->draw_text.tex_y
 		* game->textures[texture].line_length + game->draw_text.tex_x
 		* (game->textures[texture].bits_per_pixel / 8) + 1];
 	infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-		* infos->mlx.img.bits_per_pixel / 8 + 2]
+		* (infos->mlx.img.bits_per_pixel / 8) + 2]
 		= game->textures[texture].addr[game->draw_text.tex_y
 		* game->textures[texture].line_length + game->draw_text.tex_x
 		* (game->textures[texture].bits_per_pixel / 8) + 2];
 }
 
-static void	draw_ceilling_and_floor(t_info *infos, t_draw *draw, int x)
+static void	draw_ceilling_and_floor(t_info *info, t_draw *draw, int x)
 {
 	int	y;
 
 	y = -1;
-	while ((x >= 0 && x <= infos->mlx.win_width) && (++y >= 0
-			&& y <= infos->mlx.win_heigth) && y < draw->startdraw)
+	while ((x >= 0 && x <= info->mlx.win_width) && (++y >= 0
+			&& y <= info->mlx.win_heigth) && y < draw->startdraw)
 	{
-		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-			* infos->mlx.img.bits_per_pixel / 8 + 2] = infos->ceilling_color.r;
-		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-			* infos->mlx.img.bits_per_pixel / 8 + 1] = infos->ceilling_color.g;
-		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-			* infos->mlx.img.bits_per_pixel / 8] = infos->ceilling_color.b;
+		info->mlx.img.addr[y * info->mlx.img.line_length + x
+			* (info->mlx.img.bits_per_pixel / 8) + 2] = info->ceilling_color.r;
+		info->mlx.img.addr[y * info->mlx.img.line_length + x
+			* (info->mlx.img.bits_per_pixel / 8) + 1] = info->ceilling_color.g;
+		info->mlx.img.addr[y * info->mlx.img.line_length + x
+			* (info->mlx.img.bits_per_pixel / 8)] = info->ceilling_color.b;
 	}
 	y = draw->enddraw - 1;
-	while ((x >= 0 && x <= infos->mlx.win_width) && (++y >= 0
-			&& y <= infos->mlx.win_heigth) && y < infos->mlx.win_heigth)
+	while ((x >= 0 && x <= info->mlx.win_width) && (++y >= 0
+			&& y <= info->mlx.win_heigth) && y <= info->mlx.win_heigth)
 	{
-		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-			* infos->mlx.img.bits_per_pixel / 8 + 2] = infos->floor_color.r;
-		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-			* infos->mlx.img.bits_per_pixel / 8 + 1] = infos->floor_color.g;
-		infos->mlx.img.addr[y * infos->mlx.img.line_length + x
-			* infos->mlx.img.bits_per_pixel / 8] = infos->floor_color.b;
+		info->mlx.img.addr[y * info->mlx.img.line_length + x
+			* (info->mlx.img.bits_per_pixel / 8) + 2] = info->floor_color.r;
+		info->mlx.img.addr[y * info->mlx.img.line_length + x
+			* (info->mlx.img.bits_per_pixel / 8) + 1] = info->floor_color.g;
+		info->mlx.img.addr[y * info->mlx.img.line_length + x
+			* (info->mlx.img.bits_per_pixel / 8)] = info->floor_color.b;
 	}
 }
 
@@ -112,11 +112,12 @@ void	draw_wall_line(t_info *infos, int x)
 	t_game	*game;
 
 	game = &infos->game;
+	draw_ceilling_and_floor(infos, &game->draw, x);
 	y = game->draw.startdraw - 1;
 	init_texture_variables(game);
 	while ((x >= 0 && x <= infos->mlx.win_width)
 		&& (++y >= 0 && y <= infos->mlx.win_heigth)
-		&& y <= game->draw.enddraw)
+		&& y < game->draw.enddraw + 1)
 	{
 		tmp = y * game->textures[game->draw_text.texture].line_length
 			- infos->mlx.win_heigth
@@ -129,5 +130,4 @@ void	draw_wall_line(t_info *infos, int x)
 			/ game->textures[game->draw_text.texture].line_length;
 		put_texture(infos, game, x, y);
 	}
-	draw_ceilling_and_floor(infos, &game->draw, x);
 }
