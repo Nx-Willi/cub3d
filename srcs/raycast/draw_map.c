@@ -6,7 +6,7 @@
 /*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:42:20 by william           #+#    #+#             */
-/*   Updated: 2022/09/07 13:15:42 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:27:56 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	draw_ceilling_and_floor(t_info *info, t_draw *draw, int x)
 	}
 	y = draw->enddraw - 1;
 	while ((x >= 0 && x <= info->mlx.win_width) && (++y >= 0
-			&& y <= info->mlx.win_heigth) && y <= info->mlx.win_heigth)
+			&& y < info->mlx.win_heigth - 1))
 	{
 		info->mlx.img.addr[y * info->mlx.img.line_length + x
 			* (info->mlx.img.bits_per_pixel / 8) + 2] = info->floor_color.r;
@@ -112,7 +112,6 @@ void	draw_wall_line(t_info *infos, int x)
 	t_game	*game;
 
 	game = &infos->game;
-	draw_ceilling_and_floor(infos, &game->draw, x);
 	y = game->draw.startdraw - 1;
 	init_texture_variables(game);
 	while ((x >= 0 && x <= infos->mlx.win_width)
@@ -130,4 +129,5 @@ void	draw_wall_line(t_info *infos, int x)
 			/ game->textures[game->draw_text.texture].line_length;
 		put_texture(infos, game, x, y);
 	}
+	draw_ceilling_and_floor(infos, &game->draw, x);
 }
