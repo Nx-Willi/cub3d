@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tab_char_to_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:58:38 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/22 16:42:16 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/09/07 16:57:46 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	get_tab_info(char c)
 {
 	if (c == '1')
 		return (1);
-	else if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	else if (c == '2' || c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W') //
 		return (0);
 	else
 		return (-1);
