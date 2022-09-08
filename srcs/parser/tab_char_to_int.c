@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tab_char_to_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:58:38 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/09/08 12:12:06 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:20:38 by xle-baux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,13 @@ int	**tab_char_to_int(t_check_info *t_infos, char **char_map)
 	}
 	i_map[i] = NULL;
 	if (check_out_walls(t_infos, i_map) == FALSE)
+	{
+		i = 0;
+		while (i_map[i])
+			free(i_map[i++]);
+		free(i_map);
+		free_char_char(char_map);
 		return (printf("Error\nThe map must be surrounded by walls.\n"), NULL);
+	}
 	return (i_map);
 }
