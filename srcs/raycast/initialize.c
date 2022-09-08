@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: william <william@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:05:21 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/08/22 16:54:09 by william          ###   ########.fr       */
+/*   Updated: 2022/09/08 11:40:43 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void	get_wall_and_draw_distance(t_game *game)
 		game->draw.startdraw = 0;
 	game->draw.enddraw = game->ray.line_height / 2
 		+ game->infos->mlx.win_heigth / 2;
-	if (game->draw.enddraw >= game->infos->mlx.win_heigth)
+	if (game->draw.enddraw >= game->infos->mlx.win_heigth
+		|| game->draw.enddraw < 0)
 		game->draw.enddraw = game->infos->mlx.win_heigth - 1;
 }
