@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_info.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xle-baux <xle-baux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 17:11:50 by xle-baux          #+#    #+#             */
-/*   Updated: 2022/09/08 13:33:16 by xle-baux         ###   ########.fr       */
+/*   Updated: 2022/09/08 13:40:43 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	is_dup_info(t_check_info *check_info, char *line)
 
 	split_line = ft_split(line, ' ');
 	if (!split_line)
-		return (printf("Error\nCouldn't get the info\n") ,FALSE);
+		return (printf("Error\nCouldn't get the info\n"), FALSE);
 	if (ft_strncmp(split_line[0], "NO", 3) == 0 && check_info->no == TRUE)
 		return (r_and_f(FALSE, split_line, "NO"));
 	else if (ft_strncmp(split_line[0], "SO", 3) == 0 && check_info->so == TRUE)
