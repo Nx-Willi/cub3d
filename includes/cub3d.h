@@ -6,7 +6,7 @@
 /*   By: wdebotte <wdebotte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:11:20 by wdebotte          #+#    #+#             */
-/*   Updated: 2022/09/07 13:16:41 by wdebotte         ###   ########.fr       */
+/*   Updated: 2022/09/08 12:12:32 by wdebotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <X11/Xlib.h>
 
 # define TAB_NULL	3
-# define PLY_WEIGHT	0.2
+# define PLY_WEIGHT	0.1
 # ifndef SPEED
 #  define SPEED		0.2
 # endif
@@ -73,7 +73,7 @@ enum	e_map
 void	init_mlx(t_info *infos);
 void	init_moves_variables(t_move *move);
 void	init_ray_variables(t_game *game);
-//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾	
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 //__>PARSING____________________________________________________________________
 int		parser(t_info *info, char *map);
