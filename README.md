@@ -27,8 +27,6 @@ Few maps are already configured in maps folder.
 https://docs.google.com/document/d/1tdNYHg3Mfqf8dr8W6Ajs3seUugwtmaQizZ7BzimkXog/edit  
 https://harm-smits.github.io/42docs/projects/cub3d  
 
-## Score
+## Colaborator
 
-[![wdebotte's 42 cub3d Score](https://badge42.vercel.app/api/v2/cl2zu1sil002509mf9zd91hy6/project/2706611)](https://github.com/JaeSeoKim/badge42)  
-
-Done with [Xavier Le-baux](https://github.com/Xavier-LB "Xavier Le-baux")
+[Xavier Le-baux](https://github.com/Xavier-LB "Xavier Le-baux")
